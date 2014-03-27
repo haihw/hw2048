@@ -10,15 +10,23 @@
 		C5296DA718E2744400EF3714 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DA618E2744400EF3714 /* Foundation.framework */; };
 		C5296DA918E2744400EF3714 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DA818E2744400EF3714 /* CoreGraphics.framework */; };
 		C5296DAB18E2744400EF3714 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DAA18E2744400EF3714 /* UIKit.framework */; };
-		C5296DB118E2744400EF3714 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5296DAF18E2744400EF3714 /* InfoPlist.strings */; };
-		C5296DB318E2744400EF3714 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DB218E2744400EF3714 /* main.m */; };
-		C5296DB718E2744400EF3714 /* HWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DB618E2744400EF3714 /* HWAppDelegate.m */; };
-		C5296DB918E2744400EF3714 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5296DB818E2744400EF3714 /* Images.xcassets */; };
 		C5296DC018E2744400EF3714 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DBF18E2744400EF3714 /* XCTest.framework */; };
 		C5296DC118E2744400EF3714 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DA618E2744400EF3714 /* Foundation.framework */; };
 		C5296DC218E2744400EF3714 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5296DAA18E2744400EF3714 /* UIKit.framework */; };
 		C5296DCA18E2744400EF3714 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5296DC818E2744400EF3714 /* InfoPlist.strings */; };
 		C5296DCC18E2744400EF3714 /* game4096Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DCB18E2744400EF3714 /* game4096Tests.m */; };
+		C5296DE818E2753900EF3714 /* HWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DD918E2753900EF3714 /* HWAppDelegate.m */; };
+		C5296DE918E2753900EF3714 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DDD18E2753900EF3714 /* main.m */; };
+		C5296DEA18E2753900EF3714 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5296DE318E2753900EF3714 /* InfoPlist.strings */; };
+		C5296DEC18E2753900EF3714 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5296DE718E2753900EF3714 /* Images.xcassets */; };
+		C5296DF918E2762A00EF3714 /* HWRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DF718E2762A00EF3714 /* HWRootViewController.m */; };
+		C5296DFA18E2762A00EF3714 /* HWRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296DF818E2762A00EF3714 /* HWRootViewController.xib */; };
+		C5296E0318E2D62F00EF3714 /* HWGamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */; };
+		C5296E0418E2D62F00EF3714 /* HWGamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */; };
+		C5296E0818E2DCF200EF3714 /* HWGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0718E2DCF200EF3714 /* HWGameCellView.m */; };
+		C5296E0A18E2DE5A00EF3714 /* HWGameCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296E0918E2DE5A00EF3714 /* HWGameCellView.xib */; };
+		C5296E0E18E2E12800EF3714 /* HWGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0D18E2E12800EF3714 /* HWGameLogic.m */; };
+		C5296E1118E2E2B300EF3714 /* HWGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E1018E2E2B300EF3714 /* HWGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,18 +44,32 @@
 		C5296DA618E2744400EF3714 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5296DA818E2744400EF3714 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C5296DAA18E2744400EF3714 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C5296DAE18E2744400EF3714 /* game4096-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "game4096-Info.plist"; sourceTree = "<group>"; };
-		C5296DB018E2744400EF3714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C5296DB218E2744400EF3714 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C5296DB418E2744400EF3714 /* game4096-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "game4096-Prefix.pch"; sourceTree = "<group>"; };
-		C5296DB518E2744400EF3714 /* HWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HWAppDelegate.h; sourceTree = "<group>"; };
-		C5296DB618E2744400EF3714 /* HWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HWAppDelegate.m; sourceTree = "<group>"; };
-		C5296DB818E2744400EF3714 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C5296DBE18E2744400EF3714 /* game4096Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = game4096Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5296DBF18E2744400EF3714 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C5296DC718E2744400EF3714 /* game4096Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "game4096Tests-Info.plist"; sourceTree = "<group>"; };
 		C5296DC918E2744400EF3714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C5296DCB18E2744400EF3714 /* game4096Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = game4096Tests.m; sourceTree = "<group>"; };
+		C5296DD818E2753900EF3714 /* HWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAppDelegate.h; sourceTree = "<group>"; };
+		C5296DD918E2753900EF3714 /* HWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWAppDelegate.m; sourceTree = "<group>"; };
+		C5296DDC18E2753900EF3714 /* game4096-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "game4096-Prefix.pch"; sourceTree = "<group>"; };
+		C5296DDD18E2753900EF3714 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C5296DE418E2753900EF3714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C5296DE518E2753900EF3714 /* game4096-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "game4096-Info.plist"; sourceTree = "<group>"; };
+		C5296DE718E2753900EF3714 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C5296DF618E2762A00EF3714 /* HWRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWRootViewController.h; sourceTree = "<group>"; };
+		C5296DF718E2762A00EF3714 /* HWRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWRootViewController.m; sourceTree = "<group>"; };
+		C5296DF818E2762A00EF3714 /* HWRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWRootViewController.xib; sourceTree = "<group>"; };
+		C5296E0018E2D62F00EF3714 /* HWGamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGamePlayViewController.h; sourceTree = "<group>"; };
+		C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGamePlayViewController.m; sourceTree = "<group>"; };
+		C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWGamePlayViewController.xib; sourceTree = "<group>"; };
+		C5296E0518E2DB3800EF3714 /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		C5296E0618E2DCF200EF3714 /* HWGameCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGameCellView.h; sourceTree = "<group>"; };
+		C5296E0718E2DCF200EF3714 /* HWGameCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGameCellView.m; sourceTree = "<group>"; };
+		C5296E0918E2DE5A00EF3714 /* HWGameCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWGameCellView.xib; sourceTree = "<group>"; };
+		C5296E0C18E2E12800EF3714 /* HWGameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGameLogic.h; sourceTree = "<group>"; };
+		C5296E0D18E2E12800EF3714 /* HWGameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGameLogic.m; sourceTree = "<group>"; };
+		C5296E0F18E2E2B300EF3714 /* HWGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGame.h; sourceTree = "<group>"; };
+		C5296E1018E2E2B300EF3714 /* HWGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +99,7 @@
 		C5296D9A18E2744300EF3714 = {
 			isa = PBXGroup;
 			children = (
-				C5296DAC18E2744400EF3714 /* game4096 */,
+				C5296DD518E2753900EF3714 /* game4096 */,
 				C5296DC518E2744400EF3714 /* game4096Tests */,
 				C5296DA518E2744400EF3714 /* Frameworks */,
 				C5296DA418E2744400EF3714 /* Products */,
@@ -104,28 +126,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C5296DAC18E2744400EF3714 /* game4096 */ = {
-			isa = PBXGroup;
-			children = (
-				C5296DB518E2744400EF3714 /* HWAppDelegate.h */,
-				C5296DB618E2744400EF3714 /* HWAppDelegate.m */,
-				C5296DB818E2744400EF3714 /* Images.xcassets */,
-				C5296DAD18E2744400EF3714 /* Supporting Files */,
-			);
-			path = game4096;
-			sourceTree = "<group>";
-		};
-		C5296DAD18E2744400EF3714 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C5296DAE18E2744400EF3714 /* game4096-Info.plist */,
-				C5296DAF18E2744400EF3714 /* InfoPlist.strings */,
-				C5296DB218E2744400EF3714 /* main.m */,
-				C5296DB418E2744400EF3714 /* game4096-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		C5296DC518E2744400EF3714 /* game4096Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +142,122 @@
 				C5296DC818E2744400EF3714 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C5296DD518E2753900EF3714 /* game4096 */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DD618E2753900EF3714 /* Classes */,
+				C5296DE018E2753900EF3714 /* Resources */,
+			);
+			path = game4096;
+			sourceTree = "<group>";
+		};
+		C5296DD618E2753900EF3714 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C5296E0B18E2E11A00EF3714 /* GameLogic */,
+				C5296DF518E2762A00EF3714 /* ViewControllers */,
+				C5296DD718E2753900EF3714 /* AppDelegate */,
+				C5296DDA18E2753900EF3714 /* GlobalLibs */,
+				C5296DDB18E2753900EF3714 /* Others */,
+				C5296DDF18E2753900EF3714 /* Views */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C5296DD718E2753900EF3714 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DD818E2753900EF3714 /* HWAppDelegate.h */,
+				C5296DD918E2753900EF3714 /* HWAppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C5296DDA18E2753900EF3714 /* GlobalLibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GlobalLibs;
+			sourceTree = "<group>";
+		};
+		C5296DDB18E2753900EF3714 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DDC18E2753900EF3714 /* game4096-Prefix.pch */,
+				C5296DDD18E2753900EF3714 /* main.m */,
+				C5296E0518E2DB3800EF3714 /* Constant.h */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		C5296DDF18E2753900EF3714 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5296E0618E2DCF200EF3714 /* HWGameCellView.h */,
+				C5296E0718E2DCF200EF3714 /* HWGameCellView.m */,
+				C5296E0918E2DE5A00EF3714 /* HWGameCellView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C5296DE018E2753900EF3714 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DE118E2753900EF3714 /* Data */,
+				C5296DE618E2753900EF3714 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C5296DE118E2753900EF3714 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DE218E2753900EF3714 /* Strings */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C5296DE218E2753900EF3714 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DE318E2753900EF3714 /* InfoPlist.strings */,
+				C5296DE518E2753900EF3714 /* game4096-Info.plist */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		C5296DE618E2753900EF3714 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DE718E2753900EF3714 /* Images.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C5296DF518E2762A00EF3714 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5296DF618E2762A00EF3714 /* HWRootViewController.h */,
+				C5296DF718E2762A00EF3714 /* HWRootViewController.m */,
+				C5296DF818E2762A00EF3714 /* HWRootViewController.xib */,
+				C5296E0018E2D62F00EF3714 /* HWGamePlayViewController.h */,
+				C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */,
+				C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C5296E0B18E2E11A00EF3714 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				C5296E0C18E2E12800EF3714 /* HWGameLogic.h */,
+				C5296E0D18E2E12800EF3714 /* HWGameLogic.m */,
+				C5296E0F18E2E2B300EF3714 /* HWGame.h */,
+				C5296E1018E2E2B300EF3714 /* HWGame.m */,
+			);
+			path = GameLogic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,8 +336,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5296DB118E2744400EF3714 /* InfoPlist.strings in Resources */,
-				C5296DB918E2744400EF3714 /* Images.xcassets in Resources */,
+				C5296DEC18E2753900EF3714 /* Images.xcassets in Resources */,
+				C5296E0A18E2DE5A00EF3714 /* HWGameCellView.xib in Resources */,
+				C5296DFA18E2762A00EF3714 /* HWRootViewController.xib in Resources */,
+				C5296DEA18E2753900EF3714 /* InfoPlist.strings in Resources */,
+				C5296E0418E2D62F00EF3714 /* HWGamePlayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,8 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5296DB318E2744400EF3714 /* main.m in Sources */,
-				C5296DB718E2744400EF3714 /* HWAppDelegate.m in Sources */,
+				C5296DE918E2753900EF3714 /* main.m in Sources */,
+				C5296DE818E2753900EF3714 /* HWAppDelegate.m in Sources */,
+				C5296DF918E2762A00EF3714 /* HWRootViewController.m in Sources */,
+				C5296E1118E2E2B300EF3714 /* HWGame.m in Sources */,
+				C5296E0E18E2E12800EF3714 /* HWGameLogic.m in Sources */,
+				C5296E0818E2DCF200EF3714 /* HWGameCellView.m in Sources */,
+				C5296E0318E2D62F00EF3714 /* HWGamePlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,18 +388,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C5296DAF18E2744400EF3714 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5296DB018E2744400EF3714 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		C5296DC818E2744400EF3714 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C5296DC918E2744400EF3714 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C5296DE318E2753900EF3714 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5296DE418E2753900EF3714 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -361,9 +485,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "game4096/game4096-Prefix.pch";
-				INFOPLIST_FILE = "game4096/game4096-Info.plist";
+				GCC_PREFIX_HEADER = "game4096/Classes/Others/game4096-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/game4096/Resources/Data/Strings/game4096-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -374,9 +500,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "game4096/game4096-Prefix.pch";
-				INFOPLIST_FILE = "game4096/game4096-Info.plist";
+				GCC_PREFIX_HEADER = "game4096/Classes/Others/game4096-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/game4096/Resources/Data/Strings/game4096-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

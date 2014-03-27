@@ -7,13 +7,17 @@
 //
 
 #import "HWAppDelegate.h"
-
+#import "HWRootViewController.h"
 @implementation HWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    HWRootViewController *vc = [[HWRootViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    [navi setNavigationBarHidden:YES];
+    self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

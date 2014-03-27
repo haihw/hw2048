@@ -1,0 +1,102 @@
+//
+//  HWGamePlayViewController.m
+//  game4096
+//
+//  Created by Hai Hw on 26/3/14.
+//  Copyright (c) 2014 Hai Hw. All rights reserved.
+//
+
+#import "HWGamePlayViewController.h"
+#import "HWGameCellView.h"
+#import "HWGameLogic.h"
+#import "HWGame.h"
+@interface HWGamePlayViewController () <HWGameDelegate>
+{
+    HWGame *game;
+}
+@end
+
+@implementation HWGamePlayViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self creatBoard];
+    [self startGame];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    _bestScoreLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+    _scoreLabel.text = @"0";
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)undoTapped:(id)sender {
+    
+}
+
+- (IBAction)restartTapped:(id)sender {
+    [self resetBoard];
+    [self startGame];
+}
+
+- (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender {
+    [game moveToDirection:sender.direction];
+}
+
+#pragma mark - gameplay
+- (void)creatBoard
+{
+    game = [[HWGame alloc] init];
+    NSMutableArray *cells = [NSMutableArray array];
+    game.gameCells = cells;
+    game.boardSize = CGSizeMake(kGameBoardSize, kGameBoardSize);
+    game.targetNumber = kGameTargetNumber;
+    game.delegate = self;
+}
+- (void)startGame
+{
+    [game startGame];
+}
+- (void)gameOver:(HWGame *)game
+{
+    
+}
+- (void)resetBoard
+{
+    for (UIView *view in game.gameCells)
+    {
+        [view removeFromSuperview];
+    }
+    [game.gameCells removeAllObjects];
+}
+- (HWGameCellView*) newCellAtPosition:(CGPoint)position
+{
+    float cellW = CGRectGetWidth(_playView.frame)/kGameBoardSize;
+    float cellH = CGRectGetHeight(_playView.frame)/kGameBoardSize;
+    HWGameCellView *cell = [[HWGameCellView alloc] initWithFrame:CGRectMake(position.y * cellW, position.x * cellH, cellW, cellH)];
+    cell.game = game;
+    cell.position = position;
+    [cell active];
+    [_playView addSubview:cell];
+    [game.gameCells addObject:cell];
+    return cell;
+}
+@end
+

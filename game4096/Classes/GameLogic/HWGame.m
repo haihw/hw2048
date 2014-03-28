@@ -68,6 +68,9 @@
         if (!bestScore || bestScore.integerValue < _gameScore) {
             bestScore = [NSNumber numberWithInteger:_gameScore];
             [[NSUserDefaults standardUserDefaults] setObject:bestScore forKey:kKeyBestScoreKey];
+            if (_delegate && [_delegate respondsToSelector:@selector(bestScoreChanged:)])
+                [_delegate bestScoreChanged:_gameScore];
+
         }
         NSLog(@"Game Over");
         if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])

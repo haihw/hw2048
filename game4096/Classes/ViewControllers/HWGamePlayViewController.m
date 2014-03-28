@@ -129,5 +129,9 @@
 {
     _scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
 }
+- (void)bestScoreChanged:(NSInteger)newScore
+{
+    _bestScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
+}
 @end
 

@@ -76,7 +76,8 @@
 }
 - (void)gameOver:(HWGame *)game
 {
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+    [alert show];
 }
 - (void)resetBoard
 {
@@ -90,7 +91,7 @@
 {
     float cellW = CGRectGetWidth(_playView.frame)/kGameBoardSize;
     float cellH = CGRectGetHeight(_playView.frame)/kGameBoardSize;
-    HWGameCellView *cell = [[HWGameCellView alloc] initWithFrame:CGRectMake(position.y * cellW, position.x * cellH, cellW, cellH)];
+    HWGameCellView *cell = [[HWGameCellView alloc] initWithFrame:CGRectMake(position.x * cellW, position.y * cellH, cellW, cellH)];
     cell.game = game;
     cell.position = position;
     [cell active];
@@ -98,5 +99,21 @@
     [game.gameCells addObject:cell];
     return cell;
 }
+- (void)moveCell:(HWGameCellView *)cell toNewPosition:(PointObject *)positionObj andDelete:(BOOL)needDelele
+{
+    [cell.superview bringSubviewToFront:cell];
+    cell.position = positionObj.point;
+    float cellW = CGRectGetWidth(_playView.frame)/game.boardSize.width;
+    float cellH = CGRectGetHeight(_playView.frame)/game.boardSize.height;
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        cell.frame = CGRectMake(cell.position.x * cellW, cell.position.y * cellH, cellW, cellH);
+    } completion:^(BOOL finished) {
+        if (needDelele){
+            [cell removeFromSuperview];
+            [positionObj.cell sync];
+        }
+    }];
+}
+
 @end
 

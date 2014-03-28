@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @protocol HWGameDelegate;
-@class HWGamePlayViewController, HWGameCellView;
+@class HWGamePlayViewController, HWGameCellView, PointObject;
 
 @interface HWGame : NSObject
 @property (nonatomic, strong) NSMutableArray *gameCells;
@@ -25,6 +25,7 @@
 - (void)resetBoard;
 - (void)gameOver:(HWGame*)game;
 - (HWGameCellView *)newCellAtPosition:(CGPoint)position;
+- (void)moveCell:(HWGameCellView*)cell toNewPosition:(PointObject*)positionObj andDelete:(BOOL)needDelele;
 @end
 @interface PointObject : NSObject
 @property (nonatomic, assign) CGPoint point;

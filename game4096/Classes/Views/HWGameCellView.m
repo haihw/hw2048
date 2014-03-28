@@ -5,7 +5,7 @@
 //  Created by Hai Hw on 26/3/14.
 //  Copyright (c) 2014 Hai Hw. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "HWGameCellView.h"
 #import "HWGame.h"
 @implementation HWGameCellView
@@ -15,6 +15,8 @@
         // Initialization code
     HWGameCellView *cell = [[[NSBundle mainBundle] loadNibNamed:@"HWGameCellView" owner:nil options:nil] firstObject];
     cell.frame = frame;
+    self.value = 0;
+    self.layer.cornerRadius = 20;
     return cell;
 }
 
@@ -30,16 +32,25 @@
 {
     _label.text = @"";
 }
-- (void)moveToDirection:(UISwipeGestureRecognizerDirection)direction
-{
-    
-}
 - (void)active
 {
     _label.alpha = 0;
-    _label.text = @"2";
+    self.value = 2;
+    [self sync];
+    self.transform = CGAffineTransformMakeScale(0.8f, 0.8f);
     [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         _label.alpha = 1;
-    } completion:nil];
+        self.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)sync
+{
+    if (_value == 0)
+        _label.text = @"";
+    else
+        _label.text = [NSString stringWithFormat:@"%d", _value];
+    //color
+    
 }
 @end

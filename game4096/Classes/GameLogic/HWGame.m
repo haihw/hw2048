@@ -43,20 +43,143 @@
     [self addRandomCell];
     [self addRandomCell];
 }
+- (void)checkGameOver
+{
+    NSLog(@"Game Over");
+    if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])
+    {
+        [_delegate gameOver:self];
+    }
+
+}
 - (void)moveToDirection:(UISwipeGestureRecognizerDirection)direction
 {
-    if ([self checkMergeBoardMoveDirection:direction])
+    BOOL isChanged = [self checkMergeBoardMoveDirection:direction];
+    BOOL canAddCell = NO;
+    if (isChanged)
     {
-        if (![self addRandomCell])
+        canAddCell = [self addRandomCell];
+    }
+    
+    if (!isChanged && !canAddCell && emptyCells.count == 0)
+    {
+        [self checkGameOver];
+    }
+
+}
+- (BOOL)canMoveObjectAtRow:(int)row collumn:(int)col withMoveDelta:(CGPoint)delta
+{
+    BOOL isChanged = NO;
+    PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(row, col)]];
+    HWGameCellView *cellView = pObj.cell;
+    if (![emptyCells containsObject:pObj])
+    {
+        NSLog(@"Found: col: %d, row: %d", col, row);
+        CGPoint newPos = [self moveCellFrom:pObj withDirectionDelta:delta];
+        if (!CGPointEqualToPoint(newPos, pObj.point))
         {
-            NSLog(@"Game Over");
-            if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])
+            isChanged = YES;
+            [emptyCells addObject:pObj];
+            PointObject *destPointObj = [allCells objectAtIndex:[self indexFromPoint:newPos]];
+            if ([emptyCells containsObject:destPointObj])
             {
-                [_delegate gameOver:self];
+                [_delegate moveCell:cellView toNewPosition:destPointObj andDelete:NO];
+                destPointObj.cell = cellView;
+                [emptyCells removeObject:destPointObj];
+            } else
+            {
+                [_delegate moveCell:cellView toNewPosition:destPointObj andDelete:YES];
             }
         }
     }
+    return isChanged;
+}
 
+- (CGPoint)moveCellFrom:(PointObject*)pointObj withDirectionDelta:(CGPoint)delta
+{
+    CGPoint pos = pointObj.point;
+    CGPoint newPos;
+    do {
+        newPos = CGPointMake(pos.x + delta.x, pos.y + delta.y);
+        if ([self isInBoard:newPos] ){
+            PointObject *newPointObj = [allCells objectAtIndex:[self indexFromPoint:newPos]];
+            if (![emptyCells containsObject:newPointObj])
+            {
+                //check to merge
+                if (newPointObj.cell.value == pointObj.cell.value){
+                    newPointObj.cell.value += pointObj.cell.value;
+                    //disappear current cell
+                    return newPos;
+                }
+                else{
+                    return pos;
+                }
+            }
+            pos = newPos;
+        }
+    }while ([self isInBoard:newPos]);
+    return pos;
+}
+- (BOOL) isInBoard:(CGPoint)point
+{
+    return CGRectContainsPoint(CGRectMake(0, 0, _boardSize.width, _boardSize.height), point);
+}
+
+- (BOOL)moveHorizontallyWithLeft:(BOOL)isLeft
+{
+    if (!_delegate || ![_delegate respondsToSelector:@selector(moveCell:toNewPosition:andDelete:)])
+        return NO;
+    
+    BOOL isChanged = FALSE;
+    int dCol, startCol;
+    if (isLeft){
+        startCol = 0;
+        dCol = 1;
+    }
+    else{
+        startCol = _boardSize.width-1;
+        dCol = -1;
+    }
+    CGPoint moveDelta = CGPointMake(-dCol, 0);
+    //travel each collumn
+    for (int row=0; row<_boardSize.width; row++){
+        int col = startCol;
+        do {
+            BOOL isMoved = [self canMoveObjectAtRow:row collumn:col withMoveDelta:moveDelta];
+            if (isMoved)
+                isChanged = YES;
+            col += dCol;
+        } while (col < _boardSize.width && col >= 0);
+    }
+    return isChanged;
+}
+- (BOOL)moveVerticallyUP:(BOOL)isUp
+{
+    if (!_delegate || ![_delegate respondsToSelector:@selector(moveCell:toNewPosition:andDelete:)])
+        return NO;
+    
+    BOOL isChanged = FALSE;
+    int dRow, startRow;
+    if (isUp){
+        startRow = 0;
+        dRow = 1;
+    }
+    else{
+        startRow = _boardSize.height-1;
+        dRow = -1;
+    }
+    CGPoint moveDelta = CGPointMake(0, -dRow);
+    //travel each collumn
+    for (int col=0; col<_boardSize.width; col++){
+        int row = startRow;
+        do {
+            BOOL isMoved = [self canMoveObjectAtRow:row collumn:col withMoveDelta:moveDelta];
+            if (isMoved)
+                isChanged = YES;
+            row += dRow;
+        } while (row < _boardSize.height && row >= 0);
+    }
+    return isChanged;
 }
 //return YES if has change
 - (BOOL)checkMergeBoardMoveDirection:(UISwipeGestureRecognizerDirection)direction
@@ -64,20 +187,19 @@
     switch (direction) {
         case UISwipeGestureRecognizerDirectionUp:
             //check from most top cell
-            break;
+            return [self moveVerticallyUP:YES];
         case UISwipeGestureRecognizerDirectionDown:
             //check from most down cell
-            break;
+            return [self moveVerticallyUP:NO];
         case UISwipeGestureRecognizerDirectionLeft:
             //check from most left cell
-            break;
+            return [self moveHorizontallyWithLeft:YES];
         case UISwipeGestureRecognizerDirectionRight:
             //check from most right cell
-            break;
+            return [self moveHorizontallyWithLeft:NO];
         default:
-            break;
+            return NO;
     }
-    return YES;
 }
 #pragma mark logic
 - (BOOL)addRandomCell
@@ -89,6 +211,7 @@
         if (_delegate && [_delegate respondsToSelector:@selector(newCellAtPosition:)])
         {
             HWGameCellView *cell = [_delegate newCellAtPosition:pointObj.point];
+            NSLog(@"New cell %@", NSStringFromCGPoint(pointObj.point));
             pointObj.cell = cell;
         }
         return YES;
@@ -103,7 +226,7 @@
 }
 - (int)indexFromPoint: (CGPoint)point
 {
-    return point.y * kGameBoardSize + point.x;
+    return point.x * kGameBoardSize + point.y;
 }
 - (CGPoint)pointFromIndex :(int)index
 {

@@ -72,7 +72,7 @@
                         <action selector="undoTapped:" destination="-1" eventType="touchUpInside" id="PeO-Au-DM7"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-ke-FMn">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-ke-FMn">
                     <rect key="frame" x="20" y="50" width="280" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -169,6 +169,10 @@
                 <action selector="swipeDetected:" destination="-1" id="8HM-62-Xeb"/>
             </connections>
         </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="up" id="awT-aU-lMs"/>
+        <swipeGestureRecognizer direction="up" id="awT-aU-lMs">
+            <connections>
+                <action selector="swipeDetected:" destination="-1" id="J6c-8h-RmY"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
 </document>

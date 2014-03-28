@@ -11,8 +11,9 @@
 @interface HWGameCellView : UIView
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) int value;
 @property (nonatomic, strong) HWGame *game;
 - (void)active;
 - (void)reset;
-- (void)moveToDirection:(UISwipeGestureRecognizerDirection) direction;
+- (void)sync;
 @end

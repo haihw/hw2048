@@ -44,19 +44,37 @@
     [self addRandomCell];
     [self addRandomCell];
 }
+- (BOOL)isGameOver
+{
+    if (emptyCells.count > 0) {
+        return NO;
+    }
+    for (int row = 0; row<_boardSize.height-1; row++)
+        for (int col = 0; col<_boardSize.width-1; col++)
+        {
+            PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row)]];
+            PointObject *downObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row+1)]];
+            PointObject *leftObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col+1, row)]];
+            if (pObj.cell.value == downObjt.cell.value || pObj.cell.value == leftObjt.cell.value)
+                return NO;
+        }
+    return YES;
+}
 - (void)checkGameOver
 {
-    NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
-    if (!bestScore || bestScore.integerValue < _gameScore) {
-        bestScore = [NSNumber numberWithInteger:_gameScore];
-        [[NSUserDefaults standardUserDefaults] setObject:bestScore forKey:kKeyBestScoreKey];
-    }
-    NSLog(@"Game Over");
-    if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])
+    if ([self isGameOver])
     {
-        [_delegate gameOver:self];
+        NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+        if (!bestScore || bestScore.integerValue < _gameScore) {
+            bestScore = [NSNumber numberWithInteger:_gameScore];
+            [[NSUserDefaults standardUserDefaults] setObject:bestScore forKey:kKeyBestScoreKey];
+        }
+        NSLog(@"Game Over");
+        if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])
+        {
+            [_delegate gameOver:self];
+        }
     }
-
 }
 - (void)moveToDirection:(UISwipeGestureRecognizerDirection)direction
 {

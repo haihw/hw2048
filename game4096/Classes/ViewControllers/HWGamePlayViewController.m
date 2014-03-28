@@ -105,7 +105,7 @@
     cell.position = positionObj.point;
     float cellW = CGRectGetWidth(_playView.frame)/game.boardSize.width;
     float cellH = CGRectGetHeight(_playView.frame)/game.boardSize.height;
-    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         cell.frame = CGRectMake(cell.position.x * cellW, cell.position.y * cellH, cellW, cellH);
     } completion:^(BOOL finished) {
         if (needDelele){

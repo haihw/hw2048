@@ -70,14 +70,15 @@
 - (BOOL)canMoveObjectAtRow:(int)row collumn:(int)col withMoveDelta:(CGPoint)delta
 {
     BOOL isChanged = NO;
-    PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(row, col)]];
+    PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row)]]; //col ~ x, row ~y
     HWGameCellView *cellView = pObj.cell;
     if (![emptyCells containsObject:pObj])
     {
-        NSLog(@"Found: col: %d, row: %d", col, row);
+        NSLog(@"%@ Found cell", NSStringFromCGPoint(pObj.point));
         CGPoint newPos = [self moveCellFrom:pObj withDirectionDelta:delta];
         if (!CGPointEqualToPoint(newPos, pObj.point))
         {
+            NSLog(@"%@ moved dest", NSStringFromCGPoint(newPos));
             isChanged = YES;
             [emptyCells addObject:pObj];
             PointObject *destPointObj = [allCells objectAtIndex:[self indexFromPoint:newPos]];
@@ -88,6 +89,7 @@
                 [emptyCells removeObject:destPointObj];
             } else
             {
+                NSLog(@"Merged");
                 [_delegate moveCell:cellView toNewPosition:destPointObj andDelete:YES];
             }
         }
@@ -133,10 +135,12 @@
     BOOL isChanged = FALSE;
     int dCol, startCol;
     if (isLeft){
+        NSLog(@"MOVE LEFT");
         startCol = 0;
         dCol = 1;
     }
     else{
+        NSLog(@"MOVE RIGHT");
         startCol = _boardSize.width-1;
         dCol = -1;
     }
@@ -161,10 +165,12 @@
     BOOL isChanged = FALSE;
     int dRow, startRow;
     if (isUp){
+        NSLog(@"MOVE UP");
         startRow = 0;
         dRow = 1;
     }
     else{
+        NSLog(@"MOVE DOWN");
         startRow = _boardSize.height-1;
         dRow = -1;
     }

@@ -9,3 +9,10 @@
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
 #define kGameTargetNumber 2048
+//commbo1
+#define HexColor11MidNightBlue 0x003366
+#define HexColor12DodgeBlue    0x3399FF
+#define HexColor13PeachOrange  0xFFCC99
+#define HexColor14OrangeRed    0xFF9966
+//commbo2
+#define HexColor    @""

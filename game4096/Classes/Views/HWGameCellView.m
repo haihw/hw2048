@@ -8,6 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "HWGameCellView.h"
 #import "HWGame.h"
+#import "UIColor+HexColor.h"
 @implementation HWGameCellView
 
 - (id)initWithFrame:(CGRect)frame
@@ -51,6 +52,37 @@
     else
         _label.text = [NSString stringWithFormat:@"%d", _value];
     //color
-    
+    switch (_value) {
+        case 2:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor11MidNightBlue];
+            self.label.textColor = [UIColor colorFromHex:HexColor12DodgeBlue];
+            break;
+        case 4:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor12DodgeBlue];
+            self.label.textColor = [UIColor colorFromHex:HexColor13PeachOrange];
+            break;
+        case 8:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor13PeachOrange];
+            self.label.textColor = [UIColor colorFromHex:HexColor14OrangeRed];
+            break;
+        case 16:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor14OrangeRed];
+            self.label.textColor = [UIColor colorFromHex:HexColor11MidNightBlue];
+            break;
+        case 32:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor11MidNightBlue];
+            self.label.textColor = [UIColor colorFromHex:HexColor13PeachOrange];
+            break;
+        case 64:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor12DodgeBlue];
+            self.label.textColor = [UIColor colorFromHex:HexColor14OrangeRed];
+            break;
+        case 128:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor12DodgeBlue];
+            self.label.textColor = [UIColor colorFromHex:HexColor11MidNightBlue];
+            break;
+        default:
+            break;
+    }
 }
 @end

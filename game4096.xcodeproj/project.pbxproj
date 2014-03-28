@@ -27,6 +27,7 @@
 		C5296E0A18E2DE5A00EF3714 /* HWGameCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296E0918E2DE5A00EF3714 /* HWGameCellView.xib */; };
 		C5296E0E18E2E12800EF3714 /* HWGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0D18E2E12800EF3714 /* HWGameLogic.m */; };
 		C5296E1118E2E2B300EF3714 /* HWGame.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E1018E2E2B300EF3714 /* HWGame.m */; };
+		C55EF46018E5639D00188EFF /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C55EF45F18E5639D00188EFF /* UIColor+HexColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		C5296E0D18E2E12800EF3714 /* HWGameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGameLogic.m; sourceTree = "<group>"; };
 		C5296E0F18E2E2B300EF3714 /* HWGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGame.h; sourceTree = "<group>"; };
 		C5296E1018E2E2B300EF3714 /* HWGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGame.m; sourceTree = "<group>"; };
+		C55EF45E18E5639D00188EFF /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		C55EF45F18E5639D00188EFF /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +159,7 @@
 		C5296DD618E2753900EF3714 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C55EF45C18E5639D00188EFF /* Helpers */,
 				C5296E0B18E2E11A00EF3714 /* GameLogic */,
 				C5296DF518E2762A00EF3714 /* ViewControllers */,
 				C5296DD718E2753900EF3714 /* AppDelegate */,
@@ -260,6 +264,23 @@
 			path = GameLogic;
 			sourceTree = "<group>";
 		};
+		C55EF45C18E5639D00188EFF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C55EF45D18E5639D00188EFF /* UIColor+HexColor */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C55EF45D18E5639D00188EFF /* UIColor+HexColor */ = {
+			isa = PBXGroup;
+			children = (
+				C55EF45E18E5639D00188EFF /* UIColor+HexColor.h */,
+				C55EF45F18E5639D00188EFF /* UIColor+HexColor.m */,
+			);
+			path = "UIColor+HexColor";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5296DE918E2753900EF3714 /* main.m in Sources */,
+				C55EF46018E5639D00188EFF /* UIColor+HexColor.m in Sources */,
 				C5296DE818E2753900EF3714 /* HWAppDelegate.m in Sources */,
 				C5296DF918E2762A00EF3714 /* HWRootViewController.m in Sources */,
 				C5296E1118E2E2B300EF3714 /* HWGame.m in Sources */,
@@ -568,6 +590,7 @@
 				C5296DD118E2744400EF3714 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5296DD218E2744400EF3714 /* Build configuration list for PBXNativeTarget "game4096Tests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +599,7 @@
 				C5296DD418E2744400EF3714 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -23,6 +23,7 @@
 
 @protocol HWGameDelegate <NSObject>
 - (void)resetBoard;
+- (void)gameScoreChanged:(NSInteger)newScore;
 - (void)gameOver:(HWGame*)game;
 - (HWGameCellView *)newCellAtPosition:(CGPoint)position;
 - (void)moveCell:(HWGameCellView*)cell toNewPosition:(PointObject*)positionObj andDelete:(BOOL)needDelele;

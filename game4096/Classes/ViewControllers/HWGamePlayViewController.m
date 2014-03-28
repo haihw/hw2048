@@ -38,7 +38,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    _bestScoreLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+    NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+    if (bestScore)
+        _bestScoreLabel.text = bestScore.stringValue;
+    else
+        _bestScoreLabel.text = @"0";
     _scoreLabel.text = @"0";
 }
 - (void)didReceiveMemoryWarning
@@ -114,6 +118,9 @@
         }
     }];
 }
-
+- (void)gameScoreChanged:(NSInteger)newScore
+{
+    _scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
+}
 @end
 

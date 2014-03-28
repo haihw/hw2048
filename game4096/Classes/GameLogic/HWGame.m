@@ -35,6 +35,7 @@
 - (void)initGame
 {
     emptyCells = [NSMutableArray arrayWithArray:allCells];
+    _gameScore = 0;
 }
 - (void)startGame
 {
@@ -45,6 +46,11 @@
 }
 - (void)checkGameOver
 {
+    NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+    if (!bestScore || bestScore.integerValue < _gameScore) {
+        bestScore = [NSNumber numberWithInteger:_gameScore];
+        [[NSUserDefaults standardUserDefaults] setObject:bestScore forKey:kKeyBestScoreKey];
+    }
     NSLog(@"Game Over");
     if (_delegate && [_delegate respondsToSelector:@selector(gameOver:)])
     {
@@ -110,6 +116,7 @@
                 //check to merge
                 if (newPointObj.cell.value == pointObj.cell.value){
                     newPointObj.cell.value += pointObj.cell.value;
+                    self.gameScore += newPointObj.cell.value;
                     //disappear current cell
                     return newPos;
                 }
@@ -217,6 +224,7 @@
         if (_delegate && [_delegate respondsToSelector:@selector(newCellAtPosition:)])
         {
             HWGameCellView *cell = [_delegate newCellAtPosition:pointObj.point];
+            self.gameScore += cell.value;
             NSLog(@"New cell %@", NSStringFromCGPoint(pointObj.point));
             pointObj.cell = cell;
         }
@@ -238,7 +246,12 @@
 {
     return CGPointMake(index/kGameBoardSize, index %kGameBoardSize);
 }
-
+- (void)setGameScore:(NSInteger)gameScore
+{
+    _gameScore = gameScore;
+    if (_delegate && [_delegate respondsToSelector:@selector(gameScoreChanged:)])
+        [_delegate gameScoreChanged:_gameScore];
+}
 @end
 
 @implementation PointObject

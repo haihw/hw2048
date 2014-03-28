@@ -15,4 +15,8 @@
 #define HexColor13PeachOrange  0xFFCC99
 #define HexColor14OrangeRed    0xFF9966
 //commbo2
-#define HexColor    @""
+#define HexColor21BlueChill    0x129793
+#define HexColor22Emperor	   0x505050
+#define HexColor23EggWhite     0xFFF5C3
+#define HexColor24Sinbad       0x9BD7D5
+#define HexColor25BitterSweet  0xFF7260

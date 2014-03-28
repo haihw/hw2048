@@ -13,6 +13,7 @@
 @interface HWGamePlayViewController () <HWGameDelegate>
 {
     HWGame *game;
+    BOOL isStartedGame;
 }
 @end
 
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self creatBoard];
-    [self startGame];
+    isStartedGame = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -44,6 +45,10 @@
     else
         _bestScoreLabel.text = @"0";
     _scoreLabel.text = @"0";
+    if (!isStartedGame)
+    {
+        [self startGame];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -76,10 +81,12 @@
 }
 - (void)startGame
 {
+    isStartedGame = YES;
     [game startGame];
 }
 - (void)gameOver:(HWGame *)game
 {
+    isStartedGame = NO;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
     [alert show];
 }

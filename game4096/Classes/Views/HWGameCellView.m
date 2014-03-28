@@ -54,8 +54,8 @@
     //color
     switch (_value) {
         case 2:
-            self.label.backgroundColor = [UIColor colorFromHex:HexColor11MidNightBlue];
-            self.label.textColor = [UIColor colorFromHex:HexColor12DodgeBlue];
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor24Sinbad];
+            self.label.textColor = [UIColor colorFromHex:HexColor23EggWhite];
             break;
         case 4:
             self.label.backgroundColor = [UIColor colorFromHex:HexColor12DodgeBlue];
@@ -81,6 +81,27 @@
             self.label.backgroundColor = [UIColor colorFromHex:HexColor12DodgeBlue];
             self.label.textColor = [UIColor colorFromHex:HexColor11MidNightBlue];
             break;
+        case 256:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor24Sinbad];
+            self.label.textColor = [UIColor colorFromHex:HexColor25BitterSweet];
+            break;
+        case 512:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor23EggWhite];
+            self.label.textColor = [UIColor colorFromHex:HexColor24Sinbad];
+            break;
+        case 1024:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor21BlueChill];
+            self.label.textColor = [UIColor colorFromHex:HexColor24Sinbad];
+            break;
+        case 2048:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor22Emperor];
+            self.label.textColor = [UIColor colorFromHex:HexColor24Sinbad];
+            break;
+        case 4096:
+            self.label.backgroundColor = [UIColor colorFromHex:HexColor25BitterSweet];
+            self.label.textColor = [UIColor colorFromHex:HexColor21BlueChill];
+            break;
+
         default:
             break;
     }

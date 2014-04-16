@@ -8,12 +8,15 @@
 
 #import "HWGamePlayViewController.h"
 #import "HWGameCellView.h"
-#import "HWGameLogic.h"
+#import "HWGameSetting.h"
 #import "HWGame.h"
-@interface HWGamePlayViewController () <HWGameDelegate>
+#import <iAd/iAd.h>
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate>
 {
     HWGame *game;
     BOOL isStartedGame;
+    GADBannerView *topBanner;
+    GADBannerView *botBanner;
 }
 @end
 
@@ -32,9 +35,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    topBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
+    topBanner.adUnitID = kGADKey;
+    topBanner.delegate = self;
+    topBanner.rootViewController = self;
+    [_adBannerTopView addSubview:topBanner];
+
+    botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
+    botBanner.adUnitID = kGADKey;
+    botBanner.delegate = self;
+    botBanner.rootViewController = self;
+    [_adBannerBotView addSubview:botBanner];
+    
     [self creatBoard];
     isStartedGame = NO;
+    
+    GADRequest *request = [GADRequest request];
+    
+    // Make the request for a test ad. Put in an identifier for
+    // the simulator as well as any devices you want to receive test ads.
+    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", nil];
+    [topBanner loadRequest:request];
+    [botBanner loadRequest:request];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -66,7 +90,9 @@
 }
 
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender {
-    [game moveToDirection:sender.direction];
+    if (sender.state == UIGestureRecognizerStateRecognized){
+        [game moveToDirection:sender.direction];
+    }
 }
 
 #pragma mark - gameplay
@@ -87,7 +113,7 @@
 - (void)gameOver:(HWGame *)game
 {
     isStartedGame = NO;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: nil];
     [alert show];
 }
 - (void)resetBoard
@@ -105,6 +131,7 @@
     HWGameCellView *cell = [[HWGameCellView alloc] initWithFrame:CGRectMake(position.x * cellW, position.y * cellH, cellW, cellH)];
     cell.game = game;
     cell.position = position;
+    cell.imageNames = [(HWGameSetting*)[HWGameSetting SharedSetting] girlImages];
     [cell active];
     [_playView addSubview:cell];
     [game.gameCells addObject:cell];
@@ -116,7 +143,7 @@
     cell.position = positionObj.point;
     float cellW = CGRectGetWidth(_playView.frame)/game.boardSize.width;
     float cellH = CGRectGetHeight(_playView.frame)/game.boardSize.height;
-    [UIView animateWithDuration:0.2f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:kAnimationMoveDuration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         cell.frame = CGRectMake(cell.position.x * cellW, cell.position.y * cellH, cellW, cellH);
     } completion:^(BOOL finished) {
         if (needDelele){
@@ -132,6 +159,37 @@
 - (void)bestScoreChanged:(NSInteger)newScore
 {
     _bestScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
+}
+
+#pragma mark alert
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self restartTapped:nil];
+}
+#pragma mark iAd Delegate
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"iAd %@", error);
+    topBanner.hidden = NO;
+    botBanner.hidden = NO;
+}
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    topBanner.hidden = YES;
+    botBanner.hidden = YES;
+    NSLog(@"iAd loaded");
+}
+#pragma mark GADDelegate
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    NSLog(@"GAD %@", error);
+}
+- (void)adViewDidReceiveAd:(GADBannerView *)view{
+    NSLog(@"GAD loaded");
+}
+- (void)adViewWillLeaveApplication:(GADBannerView *)adView
+{
+    
 }
 @end
 

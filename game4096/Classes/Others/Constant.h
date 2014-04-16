@@ -5,9 +5,11 @@
 //  Created by Hai Hw on 26/3/14.
 //  Copyright (c) 2014 Hai Hw. All rights reserved.
 //
-
+#define kGADKey @"b9f3c56d4b92411d"
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
+#define kAnimationMoveDuration 0.075f
+#define kAnimationNewDuration 0.15f
 #define kGameTargetNumber 2048
 //commbo1
 #define HexColor11MidNightBlue 0x003366

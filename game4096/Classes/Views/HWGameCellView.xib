@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3096" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-Ff-R3l">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3096" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="EBW-Ff-R3l">
                     <rect key="frame" x="2" y="2" width="96" height="96"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -19,15 +19,24 @@
                     <color key="textColor" red="0.20000000000000001" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y8X-5Q-Z0U">
+                    <rect key="frame" x="2" y="2" width="96" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Y8X-5Q-Z0U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="CmN-iJ-bXx"/>
                 <constraint firstAttribute="trailing" secondItem="EBW-Ff-R3l" secondAttribute="trailing" constant="2" id="Et0-Wz-bb4"/>
+                <constraint firstItem="Y8X-5Q-Z0U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="TMk-u4-a6R"/>
+                <constraint firstAttribute="bottom" secondItem="Y8X-5Q-Z0U" secondAttribute="bottom" constant="2" id="VYv-fd-4ML"/>
                 <constraint firstItem="EBW-Ff-R3l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="elD-h6-xq4"/>
                 <constraint firstItem="EBW-Ff-R3l" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="qEv-lw-Hey"/>
+                <constraint firstAttribute="trailing" secondItem="Y8X-5Q-Z0U" secondAttribute="trailing" constant="2" id="vjU-xv-F3R"/>
                 <constraint firstAttribute="bottom" secondItem="EBW-Ff-R3l" secondAttribute="bottom" constant="2" id="ybD-MS-2P9"/>
             </constraints>
             <connections>
+                <outlet property="imageView" destination="Y8X-5Q-Z0U" id="TX3-vS-epO"/>
                 <outlet property="label" destination="EBW-Ff-R3l" id="b6w-aJ-4HK"/>
             </connections>
         </view>

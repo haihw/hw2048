@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface HWGamePlayViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *extraInfoView;
 
 @property (strong, nonatomic) IBOutlet UIView *playView;
 @property (strong, nonatomic) IBOutlet UILabel *bestScoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutlet UIView *adBannerTopView, *adBannerBotView;
 - (IBAction)undoTapped:(id)sender;
 - (IBAction)restartTapped:(id)sender;
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender;

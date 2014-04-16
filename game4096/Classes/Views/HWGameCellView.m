@@ -39,7 +39,7 @@
     self.value = 2;
     [self sync];
     self.transform = CGAffineTransformMakeScale(0.8f, 0.8f);
-    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:kAnimationNewDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         _label.alpha = 1;
         self.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
@@ -47,6 +47,12 @@
 }
 - (void)sync
 {
+    if (_imageNames)
+    {
+        int index = log2(_value)-1;
+        _imageView.image = [UIImage imageNamed:_imageNames[index % _imageNames.count]];
+        return;
+    }
     if (_value == 0)
         _label.text = @"";
     else

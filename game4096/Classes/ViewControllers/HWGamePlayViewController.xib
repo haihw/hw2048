@@ -29,39 +29,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-pc-SRz" userLabel="View topad">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yi0-e5-tWp">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </adBannerView>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Yi0-e5-tWp" firstAttribute="leading" secondItem="UEM-pc-SRz" secondAttribute="leading" id="2iB-Fl-Mgh"/>
-                        <constraint firstItem="Yi0-e5-tWp" firstAttribute="top" secondItem="UEM-pc-SRz" secondAttribute="top" id="6Rw-1z-rsS"/>
                         <constraint firstAttribute="height" constant="50" id="90n-Q9-khq"/>
-                        <constraint firstAttribute="bottom" secondItem="Yi0-e5-tWp" secondAttribute="bottom" id="bqL-KO-uiX"/>
-                        <constraint firstAttribute="trailing" secondItem="Yi0-e5-tWp" secondAttribute="trailing" id="kn6-0k-4pD"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abr-Kt-mu4" userLabel="View botad">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-kt-liB">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </adBannerView>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="2K8-DK-Kpg"/>
-                        <constraint firstItem="0yy-kt-liB" firstAttribute="leading" secondItem="Abr-Kt-mu4" secondAttribute="leading" id="CHM-et-nBK"/>
-                        <constraint firstItem="0yy-kt-liB" firstAttribute="top" secondItem="Abr-Kt-mu4" secondAttribute="top" id="ehh-UA-xNR"/>
-                        <constraint firstAttribute="trailing" secondItem="0yy-kt-liB" secondAttribute="trailing" id="gDN-4v-mgj"/>
-                        <constraint firstAttribute="bottom" secondItem="0yy-kt-liB" secondAttribute="bottom" id="qZf-ki-2ai"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-KT-Ghw" userLabel="View - playview">

@@ -11,6 +11,7 @@
 #import "HWGameSetting.h"
 #import "HWGame.h"
 #import <iAd/iAd.h>
+#import "GADBannerView.h"
 @interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate>
 {
     HWGame *game;
@@ -54,7 +55,7 @@
     
     // Make the request for a test ad. Put in an identifier for
     // the simulator as well as any devices you want to receive test ads.
-    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", nil];
+    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", GAD_SIMULATOR_ID, nil];
     [topBanner loadRequest:request];
     [botBanner loadRequest:request];
 }
@@ -183,9 +184,11 @@
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
     NSLog(@"GAD %@", error);
+    view.hidden = YES;
 }
 - (void)adViewDidReceiveAd:(GADBannerView *)view{
     NSLog(@"GAD loaded");
+    view.hidden = NO;
 }
 - (void)adViewWillLeaveApplication:(GADBannerView *)adView
 {

@@ -1,0 +1,2 @@
+pod 'Google-AdMob-Ads-SDK', '~> 6.8.0'
+pod 'AdMobMediationAdapterIAd', '~> 6.6.0d'

@@ -64,6 +64,8 @@
 		C5D0EF4C18FE8775003C4F54 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF4B18FE8775003C4F54 /* CFNetwork.framework */; };
 		C5D0EF4E18FE877B003C4F54 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF4D18FE877B003C4F54 /* Security.framework */; };
 		C5D0EF5A18FE88A0003C4F54 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF5918FE88A0003C4F54 /* MediaPlayer.framework */; };
+		C5E9BC931965A4B600EA3940 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E9BC921965A4B600EA3940 /* CoreData.framework */; };
+		C5E9BC951965A4D800EA3940 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E9BC941965A4D800EA3940 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +154,8 @@
 		C5D0EF5218FE87AC003C4F54 /* libPods-Google-Mobile-Ads-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Google-Mobile-Ads-SDK.a"; path = "../Pods/build/Release-iphoneos/libPods-Google-Mobile-Ads-SDK.a"; sourceTree = "<group>"; };
 		C5D0EF5318FE87AC003C4F54 /* libPods-MillennialMediaSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MillennialMediaSDK.a"; path = "../Pods/build/Release-iphoneos/libPods-MillennialMediaSDK.a"; sourceTree = "<group>"; };
 		C5D0EF5918FE88A0003C4F54 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C5E9BC921965A4B600EA3940 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C5E9BC941965A4D800EA3940 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E9BC951965A4D800EA3940 /* libz.dylib in Frameworks */,
+				C58AD80B18EEA28700FCCCD4 /* SystemConfiguration.framework in Frameworks */,
+				C58AD7FF18EEA25300FCCCD4 /* AdSupport.framework in Frameworks */,
+				C5E9BC931965A4B600EA3940 /* CoreData.framework in Frameworks */,
 				C516012C18FE8EE5007FB8AC /* Social.framework in Frameworks */,
 				C516012A18FE8EDA007FB8AC /* QuartzCore.framework in Frameworks */,
 				C516012818FE8ECF007FB8AC /* MobileCoreServices.framework in Frameworks */,
@@ -169,13 +177,11 @@
 				C5D0EF4C18FE8775003C4F54 /* CFNetwork.framework in Frameworks */,
 				C5D0EF3B18FE6672003C4F54 /* StoreKit.framework in Frameworks */,
 				C5D0EF1618FD2E70003C4F54 /* iAd.framework in Frameworks */,
-				C58AD80B18EEA28700FCCCD4 /* SystemConfiguration.framework in Frameworks */,
 				C58AD80718EEA27900FCCCD4 /* MessageUI.framework in Frameworks */,
 				C58AD80518EEA27100FCCCD4 /* CoreTelephony.framework in Frameworks */,
 				C58AD80318EEA26700FCCCD4 /* AVFoundation.framework in Frameworks */,
 				C516013118FE914C007FB8AC /* SpeechKit.framework in Frameworks */,
 				C58AD80118EEA25E00FCCCD4 /* AudioToolbox.framework in Frameworks */,
-				C58AD7FF18EEA25300FCCCD4 /* AdSupport.framework in Frameworks */,
 				C5296DA918E2744400EF3714 /* CoreGraphics.framework in Frameworks */,
 				C516012318FE8AC3007FB8AC /* libAdapterSDKFlurryAppCircle.a in Frameworks */,
 				C5296DAB18E2744400EF3714 /* UIKit.framework in Frameworks */,
@@ -210,6 +216,8 @@
 		C516012D18FE914C007FB8AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5E9BC941965A4D800EA3940 /* libz.dylib */,
+				C5E9BC921965A4B600EA3940 /* CoreData.framework */,
 				C516012B18FE8EE5007FB8AC /* Social.framework */,
 				C516012918FE8EDA007FB8AC /* QuartzCore.framework */,
 				C516012718FE8ECF007FB8AC /* MobileCoreServices.framework */,
@@ -758,7 +766,7 @@
 					"$(PROJECT_DIR)/game4096/Classes/GlobalLibs/MillennialiOSAdMobAdapter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5C4AC0AF-8460-4086-A480-5BE096551316";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -771,8 +779,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -796,7 +804,7 @@
 					"$(PROJECT_DIR)/game4096/Classes/GlobalLibs/MillennialiOSAdMobAdapter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5C4AC0AF-8460-4086-A480-5BE096551316";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -16,7 +16,7 @@
 {
     HWGame *game;
     BOOL isStartedGame;
-    GADBannerView *topBanner;
+    ADBannerView *topBanner;
     GADBannerView *botBanner;
 }
 @end
@@ -36,10 +36,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    topBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
-    topBanner.adUnitID = kGADKey;
+    self.screenName  = @"Game Play View";
+    topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     topBanner.delegate = self;
-    topBanner.rootViewController = self;
     [_adBannerTopView addSubview:topBanner];
 
     botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
@@ -56,7 +55,6 @@
     // Make the request for a test ad. Put in an identifier for
     // the simulator as well as any devices you want to receive test ads.
     request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", GAD_SIMULATOR_ID, nil];
-    [topBanner loadRequest:request];
     [botBanner loadRequest:request];
 }
 
@@ -171,13 +169,11 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     NSLog(@"iAd %@", error);
-    topBanner.hidden = NO;
-    botBanner.hidden = NO;
+    banner.hidden = NO;
 }
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    topBanner.hidden = YES;
-    botBanner.hidden = YES;
+    banner.hidden = YES;
     NSLog(@"iAd loaded");
 }
 #pragma mark GADDelegate

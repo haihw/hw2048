@@ -8,6 +8,7 @@
 
 #import "HWRootViewController.h"
 #import "HWGamePlayViewController.h"
+
 @interface HWRootViewController ()
 
 @end
@@ -26,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.screenName = @"Root";
     // Do any additional setup after loading the view from its nib.
 }
 

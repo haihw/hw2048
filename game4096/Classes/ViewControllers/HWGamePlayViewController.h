@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HWGamePlayViewController : UIViewController
+#import "GAI.h"
+@interface HWGamePlayViewController : GAITrackedViewController
 @property (strong, nonatomic) IBOutlet UIView *extraInfoView;
 
 @property (strong, nonatomic) IBOutlet UIView *playView;

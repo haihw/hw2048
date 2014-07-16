@@ -169,11 +169,11 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     NSLog(@"iAd %@", error);
-    banner.hidden = NO;
+    banner.hidden = YES;
 }
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    banner.hidden = YES;
+    banner.hidden = NO;
     NSLog(@"iAd loaded");
 }
 #pragma mark GADDelegate

@@ -88,7 +88,7 @@
         canAddCell = [self addRandomCell];
     }
     
-    if (!isChanged && !canAddCell && emptyCells.count == 0)
+    if (emptyCells.count == 0)
     {
         [self checkGameOver];
     }

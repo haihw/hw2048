@@ -8,14 +8,23 @@
 
 #import <UIKit/UIKit.h>
 @class HWGame;
-@interface HWGameCellView : UIView
+@protocol HWGameCellViewDelegate <NSObject>
+- (void) gameCellWantToDisplayImage:(UIImage *)image;
+@end
+@interface HWGameCellView : UIView <UIGestureRecognizerDelegate>
+{
+    int savedValue;
+    CGRect saveFrame;
+}
 @property (strong, nonatomic) NSArray *imageNames;
+@property (strong, nonatomic) NSArray *fullimageNames;
 @property (strong, nonatomic) NSArray *colors;
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) int value;
 @property (nonatomic, strong) HWGame *game;
+@property (nonatomic, weak) id <HWGameCellViewDelegate> delegate;
 - (void)active;
 - (void)reset;
 - (void)sync;

@@ -41,8 +41,22 @@
                               @"g10",
                               @"g11",
                               @"g12",
-                              @"hw_8192",
-                              @"hw_16384"];
+                              @"g13",
+                              @"g14"];
+        shared.fullgirlImages = @[@"1f.jpg",
+                                  @"2f.jpg",
+                                  @"3f.jpg",
+                                  @"4f.jpg",
+                                  @"5f.jpg",
+                                  @"6f.jpg",
+                                  @"7f.jpg",
+                                  @"8f.jpg",
+                                  @"9f.jpg",
+                                  @"10f.jpg",
+                                  @"11f.jpg",
+                                  @"g12f.jpg",
+                                  @"g13f.jpg",
+                                  @"g14f.jpg"];
     });
     return shared;
 }

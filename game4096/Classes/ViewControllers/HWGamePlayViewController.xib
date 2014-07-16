@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -127,24 +127,28 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <swipeGestureRecognizer direction="right" id="knr-Sv-07j">
+        <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesBegan="YES" direction="right" id="knr-Sv-07j">
             <connections>
                 <action selector="swipeDetected:" destination="-1" id="W4T-Q3-pJ6"/>
+                <outlet property="delegate" destination="-1" id="YRR-Ia-GXY"/>
             </connections>
         </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="left" id="5EG-NF-wYI">
+        <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesBegan="YES" direction="left" id="5EG-NF-wYI">
             <connections>
                 <action selector="swipeDetected:" destination="-1" id="aLp-SK-DoX"/>
+                <outlet property="delegate" destination="-1" id="Fv1-AB-UTr"/>
             </connections>
         </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="down" id="Szi-A0-UtI">
+        <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesBegan="YES" direction="down" id="Szi-A0-UtI">
             <connections>
                 <action selector="swipeDetected:" destination="-1" id="8HM-62-Xeb"/>
+                <outlet property="delegate" destination="-1" id="8TS-OT-qW3"/>
             </connections>
         </swipeGestureRecognizer>
-        <swipeGestureRecognizer direction="up" id="awT-aU-lMs">
+        <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesBegan="YES" direction="up" id="awT-aU-lMs">
             <connections>
                 <action selector="swipeDetected:" destination="-1" id="J6c-8h-RmY"/>
+                <outlet property="delegate" destination="-1" id="e3d-xK-y4U"/>
             </connections>
         </swipeGestureRecognizer>
     </objects>

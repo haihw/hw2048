@@ -1,5 +1,7 @@
+platform :ios, '7.0'
 pod 'Google-AdMob-Ads-SDK', '~> 6.8.0'
 pod 'FlurrySDK/FlurrySDK'
 pod 'FlurrySDK/FlurryAds'
 pod 'GoogleAnalytics-iOS-SDK'
 pod 'AdMobMediationAdapterIAd', '~> 6.6.0d'
+pod 'JTSImageViewController'

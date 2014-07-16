@@ -9,6 +9,7 @@
 #import "HWGameCellView.h"
 #import "HWGame.h"
 #import "UIColor+HexColor.h"
+#import "HWImageDisplayView.h"
 @implementation HWGameCellView
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,9 +19,23 @@
     cell.frame = frame;
     self.value = 0;
     self.layer.cornerRadius = 20;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
+    gesture.delegate = self;
+    [self addGestureRecognizer:gesture];
     return cell;
 }
+- (IBAction)tapGesture:(id)sender
+{
+    if (!_imageNames)
+        return;
 
+    int index = log2(_value)-1;
+    UIImage *image = [UIImage imageNamed:_fullimageNames[index % _imageNames.count]];
+    if (_delegate && [_delegate respondsToSelector:@selector(gameCellWantToDisplayImage:)])
+    {
+        [_delegate gameCellWantToDisplayImage:image];
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -111,5 +126,20 @@
         default:
             break;
     }
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"touched");
+    savedValue = self.value;
+    saveFrame = self.frame;
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"ended");
+    CGPoint newLocation = [[touches anyObject] locationInView:self.superview];
+    if (CGRectContainsPoint(self.frame, newLocation) && CGRectEqualToRect(saveFrame, self.frame))
+        [self tapGesture:nil];
+//    if (CGPointEqualToPoint(saveLocation, newLocation))
+//        [self tapGesture:nil];
 }
 @end

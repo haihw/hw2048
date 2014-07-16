@@ -12,7 +12,9 @@
 #import "HWGame.h"
 #import <iAd/iAd.h>
 #import "GADBannerView.h"
-@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate>
+#import <JTSImageViewController/JTSImageViewController.h>
+
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate>
 {
     HWGame *game;
     BOOL isStartedGame;
@@ -62,14 +64,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
-    if (bestScore)
-        _bestScoreLabel.text = bestScore.stringValue;
-    else
-        _bestScoreLabel.text = @"0";
-    _scoreLabel.text = @"0";
     if (!isStartedGame)
     {
+        NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+        if (bestScore)
+            _bestScoreLabel.text = bestScore.stringValue;
+        else
+            _bestScoreLabel.text = @"0";
+        _scoreLabel.text = @"0";
         [self startGame];
     }
 }
@@ -131,6 +133,8 @@
     cell.game = game;
     cell.position = position;
     cell.imageNames = [(HWGameSetting*)[HWGameSetting SharedSetting] girlImages];
+    cell.fullimageNames = [(HWGameSetting*)[HWGameSetting SharedSetting] fullgirlImages];
+    cell.delegate = self;
     [cell active];
     [_playView addSubview:cell];
     [game.gameCells addObject:cell];
@@ -190,5 +194,19 @@
 {
     
 }
-@end
 
+#pragma mark - gesture delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+#pragma mark - HwGameCellDelegate
+- (void)gameCellWantToDisplayImage:(UIImage *)image
+{
+    JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
+    imageInfo.image = image;
+    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundStyle_ScaledDimmedBlurred];
+    [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
+    
+}
+@end

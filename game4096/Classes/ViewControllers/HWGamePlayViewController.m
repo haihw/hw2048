@@ -40,11 +40,12 @@
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     topBanner.delegate = self;
     [_adBannerTopView addSubview:topBanner];
-
+    topBanner.hidden = YES;
     botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
     botBanner.adUnitID = kGADKey;
     botBanner.delegate = self;
     botBanner.rootViewController = self;
+    botBanner.hidden = YES;
     [_adBannerBotView addSubview:botBanner];
     
     [self creatBoard];

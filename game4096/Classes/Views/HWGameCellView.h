@@ -14,7 +14,8 @@
 @interface HWGameCellView : UIView <UIGestureRecognizerDelegate>
 {
     int savedValue;
-    CGRect saveFrame;
+    CGRect savedFrame;
+    CGPoint savedLocation;
 }
 @property (strong, nonatomic) NSArray *imageNames;
 @property (strong, nonatomic) NSArray *fullimageNames;

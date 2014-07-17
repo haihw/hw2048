@@ -131,15 +131,22 @@
 {
     NSLog(@"touched");
     savedValue = self.value;
-    saveFrame = self.frame;
+    savedLocation = [[touches anyObject] locationInView:self.superview];
+
+    savedFrame = self.frame;
+}
+- (float)distanceFromPoint:(CGPoint )p1 toPoint:(CGPoint)p2
+{
+    return sqrtf((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y)*(p1.y - p2.y));
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSLog(@"ended");
     CGPoint newLocation = [[touches anyObject] locationInView:self.superview];
-    if (CGRectContainsPoint(self.frame, newLocation) && CGRectEqualToRect(saveFrame, self.frame))
+    float distance = [self distanceFromPoint:savedLocation toPoint:newLocation];
+    NSLog(@"distance: %f", distance);
+    if (CGRectContainsPoint(self.frame, newLocation) && distance < 10)
+    {
         [self tapGesture:nil];
-//    if (CGPointEqualToPoint(saveLocation, newLocation))
-//        [self tapGesture:nil];
+    }
 }
 @end

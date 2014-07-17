@@ -12,7 +12,6 @@
 #import "iRate.h"
 #import <Crashlytics/Crashlytics.h>
 @implementation HWAppDelegate
-
 + (void)initialize
 {
     //configure iRate
@@ -33,7 +32,7 @@
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-38276506-7"];
+    [[GAI sharedInstance] trackerWithTrackingId:kGATrackingID];
 
     [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
     

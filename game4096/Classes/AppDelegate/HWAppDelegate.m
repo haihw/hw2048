@@ -9,7 +9,15 @@
 #import "HWAppDelegate.h"
 #import "HWRootViewController.h"
 #import "GAI.h"
+#import "iRate.h"
 @implementation HWAppDelegate
++ (void)initialize
+{
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 0;
+    [iRate sharedInstance].usesUntilPrompt = 15;
+    [iRate sharedInstance].appStoreID = kAppstoreID;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -23,7 +31,7 @@
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-38276506-7"];
+    [[GAI sharedInstance] trackerWithTrackingId:kGATrackingID];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.

@@ -5,6 +5,8 @@
 //  Created by Hai Hw on 26/3/14.
 //  Copyright (c) 2014 Hai Hw. All rights reserved.
 //
+#define kAppstoreID 863858988
+#define kGATrackingID @"UA-38276506-7"
 #define kGADKey @"b9f3c56d4b92411d"
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4

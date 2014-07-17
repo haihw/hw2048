@@ -9,7 +9,16 @@
 #import "HWAppDelegate.h"
 #import "HWRootViewController.h"
 #import "GAI.h"
+#import "iRate.h"
 @implementation HWAppDelegate
+
++ (void)initialize
+{
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 0;
+    [iRate sharedInstance].usesUntilPrompt = 1;
+    [iRate sharedInstance].appStoreID = kAppStoreID;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -41,11 +41,13 @@
     self.screenName  = @"Game Play View";
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     topBanner.delegate = self;
+    topBanner.hidden = YES;
     [_adBannerTopView addSubview:topBanner];
 
     botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
     botBanner.adUnitID = kGADKey;
     botBanner.delegate = self;
+    botBanner.hidden = YES;
     botBanner.rootViewController = self;
     [_adBannerBotView addSubview:botBanner];
     
@@ -173,11 +175,11 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     NSLog(@"iAd %@", error);
-    banner.hidden = NO;
+    banner.hidden = YES;
 }
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    banner.hidden = YES;
+    banner.hidden = NO;
     NSLog(@"iAd loaded");
 }
 #pragma mark GADDelegate

@@ -74,7 +74,7 @@
         else
             _bestScoreLabel.text = @"0";
         _scoreLabel.text = @"0";
-        [self startGame];
+        [self restartTapped:nil];
     }
 }
 - (void)didReceiveMemoryWarning
@@ -116,7 +116,7 @@
 - (void)gameOver:(HWGame *)game
 {
     isStartedGame = NO;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Restart", nil];
     [alert show];
 }
 - (void)resetBoard
@@ -169,7 +169,8 @@
 #pragma mark alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self restartTapped:nil];
+    if (buttonIndex > 0)
+        [self restartTapped:nil];
 }
 #pragma mark iAd Delegate
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error

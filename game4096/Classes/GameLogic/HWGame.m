@@ -46,17 +46,26 @@
 }
 - (BOOL)isGameOver
 {
+    //if there are any empty cell, game on
     if (emptyCells.count > 0) {
         return NO;
     }
-    for (int row = 0; row<_boardSize.height-1; row++)
-        for (int col = 0; col<_boardSize.width-1; col++)
+    
+    // if there are any 2 same value cell have same border, game on
+    for (int row = 0; row<_boardSize.height; row++)
+        for (int col = 0; col<_boardSize.width; col++)
         {
             PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row)]];
-            PointObject *downObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row+1)]];
-            PointObject *leftObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col+1, row)]];
-            if (pObj.cell.value == downObjt.cell.value || pObj.cell.value == leftObjt.cell.value)
-                return NO;
+            if (row<_boardSize.width-1){
+                PointObject *downObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row+1)]];
+                if (pObj.cell.value == downObjt.cell.value)
+                    return NO;
+            }
+            if (col < _boardSize.height-1){
+                PointObject *leftObjt = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col+1, row)]];
+                if (pObj.cell.value == leftObjt.cell.value)
+                    return NO;
+            }
         }
     return YES;
 }

@@ -59,6 +59,7 @@
 		C58AD80518EEA27100FCCCD4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58AD80418EEA27100FCCCD4 /* CoreTelephony.framework */; };
 		C58AD80718EEA27900FCCCD4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58AD80618EEA27900FCCCD4 /* MessageUI.framework */; };
 		C58AD80B18EEA28700FCCCD4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58AD80A18EEA28700FCCCD4 /* SystemConfiguration.framework */; };
+		C5BAD739197943FD007A7A50 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BAD738197943FD007A7A50 /* Crashlytics.framework */; };
 		C5D0EF1618FD2E70003C4F54 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF1518FD2E70003C4F54 /* iAd.framework */; };
 		C5D0EF2418FE627F003C4F54 /* g10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D0EF1818FE627F003C4F54 /* g10@2x.png */; };
 		C5D0EF2518FE627F003C4F54 /* g11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D0EF1918FE627F003C4F54 /* g11@2x.png */; };
@@ -158,6 +159,7 @@
 		C58AD80418EEA27100FCCCD4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C58AD80618EEA27900FCCCD4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C58AD80A18EEA28700FCCCD4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C5BAD738197943FD007A7A50 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C5D0EF1518FD2E70003C4F54 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		C5D0EF1818FE627F003C4F54 /* g10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g10@2x.png"; sourceTree = "<group>"; };
 		C5D0EF1918FE627F003C4F54 /* g11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "g11@2x.png"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				C5296DA918E2744400EF3714 /* CoreGraphics.framework in Frameworks */,
 				C516012318FE8AC3007FB8AC /* libAdapterSDKFlurryAppCircle.a in Frameworks */,
 				C5296DAB18E2744400EF3714 /* UIKit.framework in Frameworks */,
+				C5BAD739197943FD007A7A50 /* Crashlytics.framework in Frameworks */,
 				C5296DA718E2744400EF3714 /* Foundation.framework in Frameworks */,
 				C5D0EF4A18FE7E8A003C4F54 /* libAdapterMillennial.a in Frameworks */,
 				A7046EEDEF6B4AEB9EC10A8A /* libPods.a in Frameworks */,
@@ -244,6 +247,7 @@
 		C516012D18FE914C007FB8AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C5BAD738197943FD007A7A50 /* Crashlytics.framework */,
 				C5E9BC941965A4D800EA3940 /* libz.dylib */,
 				C5E9BC921965A4B600EA3940 /* CoreData.framework */,
 				C516012B18FE8EE5007FB8AC /* Social.framework */,
@@ -668,7 +672,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run 590e85a5e7df124780bb8476a41281f5b5f54469 3d00c4a78de174ca2e786e56971cf404690c137efb1e1a0b41ecdadf2ee87ef5";
+			shellScript = "./Frameworks/Crashlytics.framework/run 590e85a5e7df124780bb8476a41281f5b5f54469 3d00c4a78de174ca2e786e56971cf404690c137efb1e1a0b41ecdadf2ee87ef5";
 		};
 		DA2A641672724C1DBC15C10C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -886,7 +890,7 @@
 					"$(PROJECT_DIR)/game4096/Classes/GlobalLibs/MillennialiOSAdMobAdapter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F2BE59F7-76F7-482D-8011-000E1A9794AE";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

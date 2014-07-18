@@ -1,6 +1,4 @@
 platform :ios, '7.0'
-pod 'MarqueeLabel'
-pod 'CrashlyticsFramework'
 pod 'Google-AdMob-Ads-SDK'
 pod 'FlurrySDK/FlurrySDK'
 pod 'FlurrySDK/FlurryAds'

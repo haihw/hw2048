@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *bestScoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UIView *adBannerTopView, *adBannerBotView;
+@property (strong, nonatomic) IBOutlet UIButton *btnRestart;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollExtracView;
 - (IBAction)undoTapped:(id)sender;
 - (IBAction)restartTapped:(id)sender;
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender;

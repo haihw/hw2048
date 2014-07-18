@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isWin;
 @property (nonatomic, assign) NSInteger gameScore;
 @property (nonatomic, weak) id <HWGameDelegate> delegate;
+@property (nonatomic, assign) float highestValue;
 - (void)startGame;
 - (void)moveToDirection:(UISwipeGestureRecognizerDirection)direction;
 @end

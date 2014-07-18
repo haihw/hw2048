@@ -7,9 +7,10 @@
 //
 
 #import "HWAppDelegate.h"
-#import "HWRootViewController.h"
+#import "HWGamePlayViewController.h"
 #import "GAI.h"
 #import "iRate.h"
+#import <Crashlytics/Crashlytics.h>
 @implementation HWAppDelegate
 
 + (void)initialize
@@ -34,9 +35,11 @@
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-38276506-7"];
 
+    [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    HWRootViewController *vc = [[HWRootViewController alloc] init];
+    HWGamePlayViewController *vc = [[HWGamePlayViewController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
     [navi setNavigationBarHidden:YES];
     self.window.rootViewController = navi;

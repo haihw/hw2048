@@ -36,6 +36,7 @@
 {
     emptyCells = [NSMutableArray arrayWithArray:allCells];
     _gameScore = 0;
+    _highestValue = 0;
 }
 - (void)startGame
 {
@@ -148,6 +149,8 @@
                     newPointObj.cell.value += pointObj.cell.value;
                     self.gameScore += newPointObj.cell.value;
                     //disappear current cell
+                    if (newPointObj.cell.value > _highestValue)
+                        _highestValue = newPointObj.cell.value;
                     return newPos;
                 }
                 else{

@@ -38,6 +38,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if ([UIScreen mainScreen].bounds.size.height <= 480)
+    {
+        _extraInfoView.hidden = YES;
+    }
+    [[_btnRestart layer] setBorderWidth:0.5f];
+    [[_btnRestart layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+//    [[_scrollExtracView layer] setBorderWidth:0.5f];
+//    [[_scrollExtracView layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+    
     self.screenName  = @"Game Play View";
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     topBanner.delegate = self;
@@ -60,22 +69,21 @@
     // the simulator as well as any devices you want to receive test ads.
     request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", GAD_SIMULATOR_ID, nil];
     [botBanner loadRequest:request];
+    
+    NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
+    if (bestScore)
+        _bestScoreLabel.text = bestScore.stringValue;
+    else
+        _bestScoreLabel.text = @"0";
+    _scoreLabel.text = @"0";
+    [self restartTapped:nil];
+
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (!isStartedGame)
-    {
-        NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
-        if (bestScore)
-            _bestScoreLabel.text = bestScore.stringValue;
-        else
-            _bestScoreLabel.text = @"0";
-        _scoreLabel.text = @"0";
-        [self restartTapped:nil];
-    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -95,6 +103,7 @@
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateRecognized){
         [game moveToDirection:sender.direction];
+        
     }
 }
 
@@ -111,6 +120,7 @@
 - (void)startGame
 {
     isStartedGame = YES;
+    _scoreLabel.text = @"0";
     [game startGame];
 }
 - (void)gameOver:(HWGame *)game

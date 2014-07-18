@@ -17,7 +17,7 @@
     //configure iRate
     [iRate sharedInstance].daysUntilPrompt = 0;
     [iRate sharedInstance].usesUntilPrompt = 15;
-    [iRate sharedInstance].appStoreID = kAppStoreID;
+    [iRate sharedInstance].appStoreID = kAppstoreID;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

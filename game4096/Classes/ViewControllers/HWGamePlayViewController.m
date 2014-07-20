@@ -13,13 +13,16 @@
 #import <iAd/iAd.h>
 #import "GADBannerView.h"
 #import <JTSImageViewController/JTSImageViewController.h>
-
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import "AudioFX.h"
 @interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate>
 {
     HWGame *game;
     BOOL isStartedGame;
     ADBannerView *topBanner;
     GADBannerView *botBanner;
+    SystemSoundID soundID;
 }
 @end
 
@@ -175,7 +178,18 @@
 {
     _bestScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
 }
-
+- (void)haveMovementWithMerge:(BOOL)hasMerged
+{
+    NSInteger randomNumber = arc4random() % 2;
+    NSString *soundName = @"move";
+    if (hasMerged)
+    {
+        soundName = @"merge1";
+        if (randomNumber > 0)
+            soundName = @"merge2";
+    }
+    [self playSoundName:soundName andExt:@"wav"];
+}
 #pragma mark alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -221,5 +235,45 @@
     JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundStyle_ScaledDimmedBlurred];
     [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
     
+}
+-(BOOL) playSoundFXnamed: (NSString*) vSFXName Loop: (BOOL) vLoop
+{
+    NSError *error;
+    
+    NSBundle* bundle = [NSBundle mainBundle];
+    
+    NSString* bundleDirectory = (NSString*)[bundle bundlePath];
+    
+    NSURL *url = [NSURL fileURLWithPath:[bundleDirectory stringByAppendingPathComponent:vSFXName]];
+    
+    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    
+    if(vLoop)
+        audioPlayer.numberOfLoops = -1;
+    else
+        audioPlayer.numberOfLoops = 0;
+    
+    BOOL success = YES;
+    
+    if (audioPlayer == nil)
+    {
+        success = NO;
+    }
+    else
+    {
+        success = [audioPlayer play];
+    }
+    return success;
+}
+-(void) playSoundName:(NSString *)name andExt:(NSString *)ext {
+    NSLog(@"%@", name);
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:name ofType:ext];
+    NSAssert(soundPath, @"Sound file not found");
+    if (soundID > 0)
+    {
+        AudioServicesDisposeSystemSoundID(soundID);
+    }
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+    AudioServicesPlaySystemSound (soundID);
 }
 @end

@@ -29,6 +29,7 @@
 - (void)gameOver:(HWGame*)game;
 - (HWGameCellView *)newCellAtPosition:(CGPoint)position;
 - (void)moveCell:(HWGameCellView*)cell toNewPosition:(PointObject*)positionObj andDelete:(BOOL)needDelele;
+- (void)haveMovementWithMerge:(BOOL)hasMerged;
 @end
 @interface PointObject : NSObject
 @property (nonatomic, assign) CGPoint point;

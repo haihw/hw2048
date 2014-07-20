@@ -106,6 +106,8 @@
 }
 - (BOOL)canMoveObjectAtRow:(int)row collumn:(int)col withMoveDelta:(CGPoint)delta
 {
+    BOOL isMoved = NO;
+    BOOL isMerged = NO;
     BOOL isChanged = NO;
     PointObject *pObj = [allCells objectAtIndex:[self indexFromPoint:CGPointMake(col, row)]]; //col ~ x, row ~y
     HWGameCellView *cellView = pObj.cell;
@@ -116,6 +118,7 @@
         if (!CGPointEqualToPoint(newPos, pObj.point))
         {
             NSLog(@"%@ moved dest", NSStringFromCGPoint(newPos));
+            isMoved = YES;
             isChanged = YES;
             [emptyCells addObject:pObj];
             PointObject *destPointObj = [allCells objectAtIndex:[self indexFromPoint:newPos]];
@@ -127,9 +130,14 @@
             } else
             {
                 NSLog(@"Merged");
+                isMerged = YES;
                 [_delegate moveCell:cellView toNewPosition:destPointObj andDelete:YES];
             }
         }
+    }
+    if (isMoved)
+    {
+        [_delegate haveMovementWithMerge:isMerged];
     }
     return isChanged;
 }

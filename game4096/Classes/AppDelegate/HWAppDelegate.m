@@ -17,7 +17,7 @@
 {
     //configure iRate
     [iRate sharedInstance].daysUntilPrompt = 0;
-    [iRate sharedInstance].usesUntilPrompt = 15;
+    [iRate sharedInstance].usesUntilPrompt = 5;
     [iRate sharedInstance].appStoreID = kAppStoreID;
 }
 

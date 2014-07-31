@@ -45,10 +45,8 @@
     {
         _extraInfoView.hidden = YES;
     }
-    [[_btnRestart layer] setBorderWidth:0.5f];
+    [[_btnRestart layer] setBorderWidth:1.0f];
     [[_btnRestart layer] setBorderColor:[UIColor lightGrayColor].CGColor];
-//    [[_scrollExtracView layer] setBorderWidth:0.5f];
-//    [[_scrollExtracView layer] setBorderColor:[UIColor lightGrayColor].CGColor];
     
     self.screenName  = @"Game Play View";
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
@@ -70,7 +68,7 @@
     
     // Make the request for a test ad. Put in an identifier for
     // the simulator as well as any devices you want to receive test ads.
-    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", GAD_SIMULATOR_ID, nil];
+    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [botBanner loadRequest:request];
     
     NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
@@ -79,7 +77,6 @@
     else
         _bestScoreLabel.text = @"0";
     _scoreLabel.text = @"0";
-    [self restartTapped:nil];
 
 }
 
@@ -87,6 +84,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if (!isStartedGame)
+    {
+        [self restartTapped:nil];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -193,8 +194,10 @@
 #pragma mark alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex > 0)
+    if (buttonIndex > 0){
+        //TODO: display GADInterstitial
         [self restartTapped:nil];
+    }
 }
 #pragma mark iAd Delegate
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error

@@ -16,8 +16,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UIView *adBannerTopView, *adBannerBotView;
 @property (strong, nonatomic) IBOutlet UIButton *btnRestart;
+@property (strong, nonatomic) IBOutlet UIButton *btnRank;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollExtracView;
 - (IBAction)undoTapped:(id)sender;
 - (IBAction)restartTapped:(id)sender;
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender;
+- (IBAction)btnRankTapped:(id)sender;
+
+#pragma mark - gamekit
+@property (nonatomic, assign)BOOL gameCenterEnabled;
+@property (nonatomic, strong) NSString *leaderboardIdentifier;
 @end

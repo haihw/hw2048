@@ -16,10 +16,12 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "AudioFX.h"
-@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate>
+
+#import <GameKit/GameKit.h>
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate>
 {
     HWGame *game;
-    BOOL isStartedGame;
+    BOOL isStartedGame, isFirstLoad;
     ADBannerView *topBanner;
     GADBannerView *botBanner;
     SystemSoundID soundID;
@@ -47,6 +49,8 @@
     }
     [[_btnRestart layer] setBorderWidth:1.0f];
     [[_btnRestart layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+    [[_btnRank layer] setBorderWidth:1.0f];
+    [[_btnRank layer] setBorderColor:[UIColor lightGrayColor].CGColor];
     
     self.screenName  = @"Game Play View";
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
@@ -77,16 +81,21 @@
     else
         _bestScoreLabel.text = @"0";
     _scoreLabel.text = @"0";
-
+    _gameCenterEnabled = NO;
+    [self authenticateLocalPlayer];
+    isFirstLoad = YES;
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (!isStartedGame)
+    
+    //only auto start game if it is the first load
+    if (isFirstLoad)
     {
         [self restartTapped:nil];
+        isFirstLoad = NO;
     }
 }
 - (void)didReceiveMemoryWarning
@@ -105,10 +114,18 @@
 }
 
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender {
+    if (!isStartedGame)
+    {
+        return;
+    }
     if (sender.state == UIGestureRecognizerStateRecognized){
         [game moveToDirection:sender.direction];
         
     }
+}
+
+- (IBAction)btnRankTapped:(id)sender {
+    [self showLeaderboardAndAchievements:YES];
 }
 
 #pragma mark - gameplay
@@ -132,6 +149,7 @@
     isStartedGame = NO;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Restart", nil];
     [alert show];
+    [self reportScore:_scoreLabel.text.integerValue];
 }
 - (void)resetBoard
 {
@@ -278,5 +296,71 @@
     }
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
     AudioServicesPlaySystemSound (soundID);
+}
+#pragma mark game center
+
+-(void)authenticateLocalPlayer{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    
+    localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+        if (viewController != nil) {
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+        else{
+            if ([GKLocalPlayer localPlayer].authenticated) {
+                _gameCenterEnabled = YES;
+                
+                // Get the default leaderboard identifier.
+                [[GKLocalPlayer localPlayer] loadDefaultLeaderboardIdentifierWithCompletionHandler:^(NSString *leaderboardIdentifier, NSError *error) {
+                    
+                    if (error != nil) {
+                        NSLog(@"%@", [error localizedDescription]);
+                    }
+                    else{
+                        _leaderboardIdentifier = leaderboardIdentifier;
+                    }
+                }];
+            }
+            
+            else{
+                _gameCenterEnabled = NO;
+            }
+        }
+    };
+}
+-(void)reportScore:(NSInteger)newScore{
+    if (!_gameCenterEnabled) {
+        return;
+    }
+    GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:_leaderboardIdentifier];
+    score.value = newScore;
+    
+    [GKScore reportScores:@[score] withCompletionHandler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+    }];
+}
+-(void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard{
+    if (!_gameCenterEnabled) {
+        return;
+    }
+    GKGameCenterViewController *gcViewController = [[GKGameCenterViewController alloc] init];
+    
+    gcViewController.gameCenterDelegate = self;
+    
+    if (shouldShowLeaderboard) {
+        gcViewController.viewState = GKGameCenterViewControllerStateLeaderboards;
+        gcViewController.leaderboardIdentifier = _leaderboardIdentifier;
+    }
+    else{
+        gcViewController.viewState = GKGameCenterViewControllerStateAchievements;
+    }
+    
+    [self presentViewController:gcViewController animated:YES completion:nil];
+}
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
 }
 @end

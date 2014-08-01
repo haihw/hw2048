@@ -12,6 +12,7 @@
 #define kAnimationMoveDuration 0.075f
 #define kAnimationNewDuration 0.15f
 #define kGameTargetNumber 2048
+#define kLeaderBoardIdentifier @"2048SexyLeaderBoard"
 //commbo1
 #define HexColor11MidNightBlue 0x003366
 #define HexColor12DodgeBlue    0x3399FF

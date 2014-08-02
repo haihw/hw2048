@@ -10,7 +10,6 @@
 #import "HWGameCellView.h"
 #import "HWGameSetting.h"
 #import "HWGame.h"
-#import <iAd/iAd.h>
 #import "GADBannerView.h"
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <AVFoundation/AVFoundation.h>
@@ -43,15 +42,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    if ([UIScreen mainScreen].bounds.size.height <= 480)
+    if ([UIScreen mainScreen].bounds.size.height > 480)
+//        && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
-        _extraInfoView.hidden = YES;
+        _lbGuide.hidden = NO;
+    } else{
+        _lbGuide.hidden = YES;
     }
     [[_btnRestart layer] setBorderWidth:1.0f];
     [[_btnRestart layer] setBorderColor:[UIColor lightGrayColor].CGColor];
-    [[_btnRank layer] setBorderWidth:1.0f];
-    [[_btnRank layer] setBorderColor:[UIColor lightGrayColor].CGColor];
-    
+    [[_playView layer] setBorderWidth:1.0f];
+    [[_playView layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+    [_btnOption setSelected:[HWGameSetting SharedSetting].isSoundEnabled];
     self.screenName  = @"Game Play View";
     topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     topBanner.delegate = self;
@@ -126,6 +128,11 @@
 
 - (IBAction)btnRankTapped:(id)sender {
     [self showLeaderboardAndAchievements:YES];
+}
+
+- (IBAction)btnOptionsTapped:(UIButton *)sender {
+    [sender setSelected:!sender.isSelected];
+    [HWGameSetting SharedSetting].isSoundEnabled = sender.isSelected;
 }
 
 #pragma mark - gameplay
@@ -287,6 +294,8 @@
     return success;
 }
 -(void) playSoundName:(NSString *)name andExt:(NSString *)ext {
+    if (![HWGameSetting SharedSetting].isSoundEnabled)
+        return;
     NSLog(@"%@", name);
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:name ofType:ext];
     NSAssert(soundPath, @"Sound file not found");

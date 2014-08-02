@@ -84,6 +84,8 @@
 		C5D0EF4C18FE8775003C4F54 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF4B18FE8775003C4F54 /* CFNetwork.framework */; };
 		C5D0EF4E18FE877B003C4F54 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF4D18FE877B003C4F54 /* Security.framework */; };
 		C5D0EF5A18FE88A0003C4F54 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D0EF5918FE88A0003C4F54 /* MediaPlayer.framework */; };
+		C5D2328D198CBFA4007FB212 /* soundOff.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D2328B198CBFA4007FB212 /* soundOff.png */; };
+		C5D2328E198CBFA4007FB212 /* soundOn.png in Resources */ = {isa = PBXBuildFile; fileRef = C5D2328C198CBFA4007FB212 /* soundOn.png */; };
 		C5E9BC931965A4B600EA3940 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E9BC921965A4B600EA3940 /* CoreData.framework */; };
 		C5E9BC951965A4D800EA3940 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C5E9BC941965A4D800EA3940 /* libz.dylib */; };
 /* End PBXBuildFile section */
@@ -197,6 +199,8 @@
 		C5D0EF5218FE87AC003C4F54 /* libPods-Google-Mobile-Ads-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Google-Mobile-Ads-SDK.a"; path = "../Pods/build/Release-iphoneos/libPods-Google-Mobile-Ads-SDK.a"; sourceTree = "<group>"; };
 		C5D0EF5318FE87AC003C4F54 /* libPods-MillennialMediaSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MillennialMediaSDK.a"; path = "../Pods/build/Release-iphoneos/libPods-MillennialMediaSDK.a"; sourceTree = "<group>"; };
 		C5D0EF5918FE88A0003C4F54 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C5D2328B198CBFA4007FB212 /* soundOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOff.png; sourceTree = "<group>"; };
+		C5D2328C198CBFA4007FB212 /* soundOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundOn.png; sourceTree = "<group>"; };
 		C5E9BC921965A4B600EA3940 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C5E9BC941965A4D800EA3940 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -425,6 +429,8 @@
 		C5296DE618E2753900EF3714 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C5D2328B198CBFA4007FB212 /* soundOff.png */,
+				C5D2328C198CBFA4007FB212 /* soundOn.png */,
 				C585452F1969A858004465FA /* girlFulls */,
 				C5D0EF3C18FE6763003C4F54 /* Blue-Starry-Night-Sky@2x.jpg */,
 				C5D0EF1718FE627F003C4F54 /* girls */,
@@ -637,6 +643,7 @@
 				C585453D1969A858004465FA /* 11f.jpg in Resources */,
 				C58F0382197BB225004B4A25 /* merge2.wav in Resources */,
 				C5296DEC18E2753900EF3714 /* Images.xcassets in Resources */,
+				C5D2328E198CBFA4007FB212 /* soundOn.png in Resources */,
 				C585452E1969A4A1004465FA /* g14@2x.png in Resources */,
 				C5D0EF2718FE627F003C4F54 /* g1@2x.png in Resources */,
 				C5D0EF2F18FE627F003C4F54 /* g9@2x.png in Resources */,
@@ -660,6 +667,7 @@
 				C58545431969A858004465FA /* 4f.jpg in Resources */,
 				C5296E0418E2D62F00EF3714 /* HWGamePlayViewController.xib in Resources */,
 				C516012418FE8AC3007FB8AC /* README.txt in Resources */,
+				C5D2328D198CBFA4007FB212 /* soundOff.png in Resources */,
 				C5D0EF2C18FE627F003C4F54 /* g6@2x.png in Resources */,
 				C58545421969A858004465FA /* 3f.jpg in Resources */,
 				C58545411969A858004465FA /* 2f.jpg in Resources */,

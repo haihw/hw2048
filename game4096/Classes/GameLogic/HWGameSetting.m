@@ -57,6 +57,7 @@
                                   @"g12f.jpg",
                                   @"g13f.jpg",
                                   @"g14f.jpg"];
+        shared.isSoundEnabled = NO;
     });
     return shared;
 }

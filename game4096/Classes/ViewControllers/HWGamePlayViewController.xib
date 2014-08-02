@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -9,11 +9,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HWGamePlayViewController">
             <connections>
                 <outlet property="adBannerBotView" destination="Abr-Kt-mu4" id="I7u-dr-oUs"/>
-                <outlet property="adBannerTopView" destination="UEM-pc-SRz" id="LNg-Zl-NfS"/>
                 <outlet property="bestScoreLabel" destination="sSF-8X-ywL" id="veU-hp-SQX"/>
+                <outlet property="btnOption" destination="rKv-QJ-WsV" id="rSL-fm-0Zk"/>
                 <outlet property="btnRank" destination="Zaq-oQ-sON" id="Hex-VY-Kv8"/>
                 <outlet property="btnRestart" destination="ApZ-sl-apH" id="GZI-ja-Eu0"/>
-                <outlet property="extraInfoView" destination="8bR-8f-E7p" id="hbD-Mi-uF6"/>
+                <outlet property="lbGuide" destination="FE9-o6-fl2" id="Qk3-5N-jVM"/>
                 <outlet property="playView" destination="rfk-KT-Ghw" id="7gR-BZ-YqP"/>
                 <outlet property="scoreLabel" destination="Yb9-9n-XDn" id="aSz-tg-l8Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,14 +28,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEM-pc-SRz" userLabel="View topad">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="90n-Q9-khq"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abr-Kt-mu4" userLabel="View botad">
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,117 +52,116 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-ke-FMn" userLabel="View - score">
-                    <rect key="frame" x="20" y="148" width="280" height="50"/>
+                    <rect key="frame" x="95" y="20" width="205" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Yb9-9n-XDn" userLabel="Label - Score">
-                            <rect key="frame" x="0.0" y="22" width="102" height="35"/>
+                            <rect key="frame" x="-4" y="22" width="102" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0000000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sSF-8X-ywL" userLabel="Label - Best">
-                            <rect key="frame" x="180" y="22" width="102" height="35"/>
+                            <rect key="frame" x="105" y="22" width="102" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="25"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc9-N8-j94">
-                            <rect key="frame" x="0.0" y="5" width="100" height="20"/>
+                            <rect key="frame" x="-3" y="5" width="100" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Best" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSW-gw-diP">
-                            <rect key="frame" x="180" y="2" width="100" height="25"/>
+                            <rect key="frame" x="106" y="2" width="100" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="wck-c8-pCc"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bR-8f-E7p" userLabel="View - extra">
-                    <rect key="frame" x="0.0" y="50" width="320" height="98"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The hottest 2048 game on the Apple Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="02Y-Du-huP">
-                            <rect key="frame" x="80" y="20" width="230" height="58"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="40"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApZ-sl-apH">
-                            <rect key="frame" x="10" y="19" width="60" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="06x-Zz-mF0"/>
-                                <constraint firstAttribute="width" constant="60" id="prP-7Q-9cF"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="30"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-9"/>
-                            <state key="normal" title="Restart"/>
-                            <state key="highlighted">
-                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="restartTapped:" destination="-1" eventType="touchUpInside" id="3nq-KR-1xg"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaq-oQ-sON">
-                            <rect key="frame" x="260" y="60" width="50" height="30"/>
+                            <rect key="frame" x="122" y="60" width="68" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="18"/>
                             <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
-                            <state key="normal" title="Rank">
+                            <state key="normal" title="Leader Board">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="btnRankTapped:" destination="-1" eventType="touchUpInside" id="k62-RR-dX6"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKv-QJ-WsV">
+                            <rect key="frame" x="27" y="60" width="40" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="18"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
+                            <state key="normal" backgroundImage="soundOff.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" backgroundImage="soundOn.png"/>
+                            <state key="highlighted">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnOptionsTapped:" destination="-1" eventType="touchUpInside" id="BEG-2L-aBE"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="02Y-Du-huP" firstAttribute="leading" secondItem="ApZ-sl-apH" secondAttribute="trailing" constant="10" id="9Ji-VD-FCp"/>
-                        <constraint firstAttribute="bottom" secondItem="02Y-Du-huP" secondAttribute="bottom" constant="20" id="HPU-z1-9ao"/>
-                        <constraint firstAttribute="trailing" secondItem="02Y-Du-huP" secondAttribute="trailing" constant="10" id="MdB-gM-rUI"/>
-                        <constraint firstItem="ApZ-sl-apH" firstAttribute="leading" secondItem="8bR-8f-E7p" secondAttribute="leading" constant="10" id="YZd-la-xG8"/>
-                        <constraint firstItem="02Y-Du-huP" firstAttribute="top" secondItem="8bR-8f-E7p" secondAttribute="top" constant="20" id="faK-4u-I6d"/>
-                        <constraint firstItem="ApZ-sl-apH" firstAttribute="top" secondItem="8bR-8f-E7p" secondAttribute="top" constant="19" id="v89-jo-ora"/>
+                        <constraint firstAttribute="width" constant="205" id="cVF-JX-pq3"/>
+                        <constraint firstAttribute="height" constant="90" id="jbL-8f-tWo"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ApZ-sl-apH">
+                    <rect key="frame" x="20" y="30" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="30"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-9"/>
+                    <state key="normal" title="Restart"/>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="restartTapped:" destination="-1" eventType="touchUpInside" id="3nq-KR-1xg"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to play! Try to get the sexies girls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="FE9-o6-fl2">
+                    <rect key="frame" x="10" y="148" width="300" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="WLO-IW-5XV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="40"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="AdU-ke-FMn" secondAttribute="trailing" constant="20" id="1kT-BM-ES1"/>
-                <constraint firstAttribute="trailing" secondItem="UEM-pc-SRz" secondAttribute="trailing" id="5SU-aq-3vV"/>
                 <constraint firstAttribute="bottom" secondItem="xEe-o1-BAn" secondAttribute="bottom" id="5p5-rn-bWR"/>
                 <constraint firstItem="Abr-Kt-mu4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6bB-pJ-sYU"/>
                 <constraint firstItem="xEe-o1-BAn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6fc-Mm-F03"/>
                 <constraint firstAttribute="trailing" secondItem="rfk-KT-Ghw" secondAttribute="trailing" constant="10" id="771-sa-5ft"/>
-                <constraint firstItem="8bR-8f-E7p" firstAttribute="top" secondItem="UEM-pc-SRz" secondAttribute="bottom" id="7vn-53-AWi"/>
-                <constraint firstItem="rfk-KT-Ghw" firstAttribute="top" secondItem="AdU-ke-FMn" secondAttribute="bottom" constant="10" id="A18-Hg-G7f"/>
-                <constraint firstItem="UEM-pc-SRz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kly-p2-qqn"/>
+                <constraint firstAttribute="trailing" secondItem="AdU-ke-FMn" secondAttribute="trailing" constant="20" id="Ocp-ey-tKd"/>
+                <constraint firstAttribute="trailing" secondItem="FE9-o6-fl2" secondAttribute="trailing" constant="10" id="SRF-TG-QUm"/>
                 <constraint firstItem="xEe-o1-BAn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SjA-tV-RgN"/>
-                <constraint firstItem="8bR-8f-E7p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Srt-Aa-o2Y"/>
                 <constraint firstAttribute="trailing" secondItem="Abr-Kt-mu4" secondAttribute="trailing" id="TRH-f2-fsz"/>
-                <constraint firstItem="AdU-ke-FMn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Tdb-Qc-jfl"/>
                 <constraint firstAttribute="bottom" secondItem="Abr-Kt-mu4" secondAttribute="bottom" id="Uy3-R0-jLH"/>
-                <constraint firstItem="UEM-pc-SRz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X2O-Cb-vZQ"/>
                 <constraint firstItem="rfk-KT-Ghw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="beT-Lv-Z82"/>
-                <constraint firstItem="AdU-ke-FMn" firstAttribute="top" secondItem="8bR-8f-E7p" secondAttribute="bottom" id="czO-eq-bvZ"/>
+                <constraint firstItem="FE9-o6-fl2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="bpQ-VB-XFJ"/>
+                <constraint firstItem="rfk-KT-Ghw" firstAttribute="top" secondItem="FE9-o6-fl2" secondAttribute="bottom" constant="10" id="dIs-gI-Udj"/>
+                <constraint firstItem="AdU-ke-FMn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="daE-Ft-Hvy"/>
                 <constraint firstAttribute="trailing" secondItem="xEe-o1-BAn" secondAttribute="trailing" id="dyQ-aR-m1t"/>
                 <constraint firstItem="Abr-Kt-mu4" firstAttribute="top" secondItem="rfk-KT-Ghw" secondAttribute="bottom" constant="10" id="iyj-mA-QOf"/>
-                <constraint firstAttribute="trailing" secondItem="8bR-8f-E7p" secondAttribute="trailing" id="oH2-kD-hCK"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -202,5 +193,7 @@
     </objects>
     <resources>
         <image name="Blue-Starry-Night-Sky.jpg" width="320" height="568"/>
+        <image name="soundOff.png" width="300" height="200"/>
+        <image name="soundOn.png" width="300" height="200"/>
     </resources>
 </document>

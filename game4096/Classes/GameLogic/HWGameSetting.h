@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface HWGameSetting : NSObject
-+(id)SharedSetting;
++(HWGameSetting *)SharedSetting;
+@property (nonatomic, assign)BOOL isSoundEnabled;
 @property (nonatomic, strong)NSArray *originalImages;
 @property (nonatomic, strong)NSArray *girlImages;
 @property (nonatomic, strong)NSArray *fullgirlImages;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Hai Hw. All rights reserved.
 //
 #define kAppStoreID 863666027
-#define kGADKey @"a153b972d377df8"
+#define kGADKey @"ca-app-pub-1931446035208028/5354368394"
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
 #define kAnimationMoveDuration 0.075f

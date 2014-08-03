@@ -352,6 +352,7 @@
 }
 -(void)showLeaderboardAndAchievements:(BOOL)shouldShowLeaderboard{
     if (!_gameCenterEnabled) {
+        [self authenticateLocalPlayer];
         return;
     }
     GKGameCenterViewController *gcViewController = [[GKGameCenterViewController alloc] init];

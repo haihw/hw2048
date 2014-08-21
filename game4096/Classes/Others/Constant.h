@@ -7,7 +7,7 @@
 //
 #define kAppstoreID 863858988
 #define kGATrackingID @"UA-38276506-7"
-#define kGADKey @"b9f3c56d4b92411d"
+#define kGADKey @"ca-app-pub-1931446035208028/3877635197"
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
 #define kAnimationMoveDuration 0.075f

@@ -5,16 +5,17 @@
 //  Created by Hai Hw on 26/3/14.
 //  Copyright (c) 2014 Hai Hw. All rights reserved.
 //
-#define kAppStoreID 863666027
-#define kGADBannerID @"ca-app-pub-1931446035208028/5354368394"
-#define kGADInterstitialID @"ca-app-pub-1931446035208028/9847529596"
+#define kGAID @"UA-38276506-11"
+#define kAppStoreID 916470874
+#define kGADBannerID @"ca-app-pub-1931446035208028/4405464799"
+#define kGADInterstitialID @"ca-app-pub-1931446035208028/5882197991"
 
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
 #define kAnimationMoveDuration 0.075f
 #define kAnimationNewDuration 0.15f
 #define kGameTargetNumber 2048
-#define kLeaderBoardIdentifier @"2048SexyLeaderBoard"
+#define kLeaderBoardIdentifier @"2048HotBoyLeaderBoard"
 //commbo1
 #define HexColor11MidNightBlue 0x003366
 #define HexColor12DodgeBlue    0x3399FF

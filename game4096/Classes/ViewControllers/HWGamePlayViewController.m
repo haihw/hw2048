@@ -11,18 +11,20 @@
 #import "HWGameSetting.h"
 #import "HWGame.h"
 #import "GADBannerView.h"
+#import "GADInterstitial.h"
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "AudioFX.h"
 
 #import <GameKit/GameKit.h>
-@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate>
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate>
 {
     HWGame *game;
     BOOL isStartedGame, isFirstLoad;
     ADBannerView *topBanner;
     GADBannerView *botBanner;
+    GADInterstitial *interstitialAd;
     SystemSoundID soundID;
 }
 @end
@@ -37,13 +39,20 @@
     }
     return self;
 }
+- (void)sendGADInterstitialRequest
+{
+    interstitialAd = [[GADInterstitial alloc] init];
+    interstitialAd.adUnitID = kGADInterstitialID;
+    interstitialAd.delegate = self;
+    [interstitialAd loadRequest:[GADRequest request]];
+    
 
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     if ([UIScreen mainScreen].bounds.size.height > 480)
-//        && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         _lbGuide.hidden = NO;
     } else{
@@ -61,19 +70,16 @@
     [_adBannerTopView addSubview:topBanner];
 
     botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
-    botBanner.adUnitID = kGADKey;
+    botBanner.adUnitID = kGADBannerID;
     botBanner.delegate = self;
     botBanner.hidden = YES;
     botBanner.rootViewController = self;
     [_adBannerBotView addSubview:botBanner];
-    
+
     [self creatBoard];
     isStartedGame = NO;
     
     GADRequest *request = [GADRequest request];
-    
-    // Make the request for a test ad. Put in an identifier for
-    // the simulator as well as any devices you want to receive test ads.
     request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
     [botBanner loadRequest:request];
     
@@ -153,6 +159,7 @@
 }
 - (void)gameOver:(HWGame *)game
 {
+    //show interstitial ad
     isStartedGame = NO;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Restart", nil];
     [alert show];
@@ -219,8 +226,8 @@
 #pragma mark alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [self sendGADInterstitialRequest];
     if (buttonIndex > 0){
-        //TODO: display GADInterstitial
         [self restartTapped:nil];
     }
 }
@@ -249,7 +256,15 @@
 {
     
 }
-
+- (void)interstitialDidReceiveAd:(GADInterstitial *)ad
+{
+    NSLog(@"GADinterstitial Loaded");
+    [ad presentFromRootViewController:self];
+}
+- (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    NSLog(@"GADinterstitial %@", error);
+}
 #pragma mark - gesture delegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
@@ -338,14 +353,15 @@
     };
 }
 -(void)reportScore:(NSInteger)newScore{
-    if (!_gameCenterEnabled) {
+    if (!_gameCenterEnabled || _leaderboardIdentifier) {
         return;
     }
     GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:_leaderboardIdentifier];
+    if (!score)
+        return;
     score.value = newScore;
-    
     [GKScore reportScores:@[score] withCompletionHandler:^(NSError *error) {
-        if (error != nil) {
+        if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
     }];

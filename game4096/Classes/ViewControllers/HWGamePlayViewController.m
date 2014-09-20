@@ -163,7 +163,6 @@
     isStartedGame = NO;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"Thank for playing" delegate:self cancelButtonTitle:@"Close" otherButtonTitles: @"Restart", nil];
     [alert show];
-    [self reportScore:_scoreLabel.text.integerValue];
 }
 - (void)resetBoard
 {
@@ -210,6 +209,7 @@
 - (void)bestScoreChanged:(NSInteger)newScore
 {
     _bestScoreLabel.text = [NSString stringWithFormat:@"%ld", (long)newScore];
+    [self reportScore: newScore];
 }
 - (void)haveMovementWithMerge:(BOOL)hasMerged
 {
@@ -353,7 +353,7 @@
     };
 }
 -(void)reportScore:(NSInteger)newScore{
-    if (!_gameCenterEnabled || _leaderboardIdentifier) {
+    if (!_gameCenterEnabled || !_leaderboardIdentifier) {
         return;
     }
     GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:_leaderboardIdentifier];

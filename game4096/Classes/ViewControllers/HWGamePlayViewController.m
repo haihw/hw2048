@@ -353,7 +353,7 @@
     };
 }
 -(void)reportScore:(NSInteger)newScore{
-    if (!_gameCenterEnabled || _leaderboardIdentifier) {
+    if (!_gameCenterEnabled || !_leaderboardIdentifier) {
         return;
     }
     GKScore *score = [[GKScore alloc] initWithLeaderboardIdentifier:_leaderboardIdentifier];

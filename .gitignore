@@ -13,7 +13,8 @@
 #   files that we want to exclude
 #
 #########################
-
+Crashlytics.framework/
+Frameworks/Crashlytics.framework/
 #####
 # OS X temporary files that should never be committed
 

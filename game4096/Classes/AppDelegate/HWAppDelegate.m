@@ -11,6 +11,8 @@
 #import "GAI.h"
 #import "iRate.h"
 #import <Crashlytics/Crashlytics.h>
+#import <AdColony/AdColony.h>
+#import <StartApp/StartApp.h>
 @implementation HWAppDelegate
 
 + (void)initialize
@@ -37,6 +39,16 @@
 
     [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
     
+    [AdColony configureWithAppID:kAdCololyAppID
+                         zoneIDs:@[kAdCololyAdZoneID]
+                        delegate:nil
+                         logging:YES];
+    
+    STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
+    sdk.appID = kStartAppID;
+    sdk.devID = kStartAppDevID;
+    sdk.preferences = [STASDKPreferences prefrencesWithAge:25 andGender:STAGender_Male];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     HWGamePlayViewController *vc = [[HWGamePlayViewController alloc] init];

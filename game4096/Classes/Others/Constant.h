@@ -9,6 +9,12 @@
 #define kGADBannerID @"ca-app-pub-1931446035208028/5354368394"
 #define kGADInterstitialID @"ca-app-pub-1931446035208028/9847529596"
 
+#define kAdCololyAppID @"app9295a5b28a874671be"
+#define kAdCololyAdZoneID @"vze769974c88034b81ab"
+
+#define kStartAppID @"212765567"
+#define kStartAppDevID @"112315576"
+
 #define kKeyBestScoreKey @"best_score"
 #define kGameBoardSize 4
 #define kAnimationMoveDuration 0.075f

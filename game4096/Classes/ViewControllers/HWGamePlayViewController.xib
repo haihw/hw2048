@@ -76,10 +76,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zaq-oQ-sON">
-                            <rect key="frame" x="122" y="60" width="68" height="30"/>
+                            <rect key="frame" x="150" y="50" width="40" height="40"/>
                             <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="18"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
-                            <state key="normal" title="Leader Board">
+                            <inset key="contentEdgeInsets" minX="5" minY="2" maxX="5" maxY="8"/>
+                            <state key="normal" image="ranking-icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
@@ -89,19 +89,33 @@
                                 <action selector="btnRankTapped:" destination="-1" eventType="touchUpInside" id="k62-RR-dX6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKv-QJ-WsV">
-                            <rect key="frame" x="27" y="60" width="40" height="30"/>
+                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKv-QJ-WsV">
+                            <rect key="frame" x="30" y="50" width="40" height="40"/>
                             <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="18"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
-                            <state key="normal" backgroundImage="soundOff.png">
+                            <inset key="contentEdgeInsets" minX="5" minY="7" maxX="5" maxY="3"/>
+                            <state key="normal" image="soundOff.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="selected" backgroundImage="soundOn.png"/>
+                            <state key="selected" image="soundOn.png"/>
                             <state key="highlighted">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="btnOptionsTapped:" destination="-1" eventType="touchUpInside" id="BEG-2L-aBE"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6H-ao-6tN">
+                            <rect key="frame" x="90" y="50" width="40" height="40"/>
+                            <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="18"/>
+                            <inset key="contentEdgeInsets" minX="8" minY="10" maxX="8" maxY="6"/>
+                            <state key="normal" image="setting-icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="btnSettingTapped:" destination="-1" eventType="touchUpInside" id="zyP-Tl-lVo"/>
                             </connections>
                         </button>
                     </subviews>
@@ -180,6 +194,8 @@
     </objects>
     <resources>
         <image name="Blue-Starry-Night-Sky.jpg" width="320" height="568"/>
+        <image name="ranking-icon.png" width="128" height="128"/>
+        <image name="setting-icon.png" width="128" height="128"/>
         <image name="soundOff.png" width="300" height="200"/>
         <image name="soundOn.png" width="300" height="200"/>
     </resources>

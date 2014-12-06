@@ -10,21 +10,27 @@
 #import "HWGameCellView.h"
 #import "HWGameSetting.h"
 #import "HWGame.h"
+#import "HWSettingViewController.h"
+
 #import "GADBannerView.h"
 #import "GADInterstitial.h"
+#import <AdColony/AdColony.h>
+#import <StartApp/StartApp.h>
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "AudioFX.h"
 
 #import <GameKit/GameKit.h>
-@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate>
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate, STABannerDelegateProtocol>
 {
     HWGame *game;
     BOOL isStartedGame, isFirstLoad;
-    ADBannerView *topBanner;
-    GADBannerView *botBanner;
+    ADBannerView *iadBanner;
+    STABannerView *startAppBanner;
+    GADBannerView *admobBanner;
     GADInterstitial *interstitialAd;
+    STAStartAppAd* startAppAd;    // ADD THIS LINE
     SystemSoundID soundID;
 }
 @end
@@ -41,12 +47,39 @@
 }
 - (void)sendGADInterstitialRequest
 {
-    interstitialAd = [[GADInterstitial alloc] init];
-    interstitialAd.adUnitID = kGADInterstitialID;
-    interstitialAd.delegate = self;
-    [interstitialAd loadRequest:[GADRequest request]];
-    
+//    interstitialAd = [[GADInterstitial alloc] init];
+//    interstitialAd.adUnitID = kGADInterstitialID;
+//    interstitialAd.delegate = self;
+//    [interstitialAd loadRequest:[GADRequest request]];
+//    [AdColony playVideoAdForZone:kAdCololyAdZoneID withDelegate:nil];
+    [startAppAd showAd];
 
+}
+- (void)setupAdBanner
+{
+    
+    iadBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    iadBanner.delegate = self;
+    iadBanner.hidden = YES;
+    
+    startAppBanner = [[STABannerView alloc] initWithSize:STA_AutoAdSize autoOrigin:STAAdOrigin_Bottom
+                                                withView:self.view withDelegate: self];
+    [startAppBanner showBanner];
+//    admobBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
+//    admobBanner.adUnitID = kGADBannerID;
+//    admobBanner.delegate = self;
+//    admobBanner.hidden = YES;
+//    admobBanner.rootViewController = self;
+//    GADRequest *request = [GADRequest request];
+//    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
+//    [admobBanner loadRequest:request];
+//    [_adBannerBotView addSubview:admobBanner];
+    
+    [_adBannerBotView addSubview:startAppBanner];
+    [_adBannerBotView addSubview:iadBanner];
+    
+    startAppBanner.hidden = YES;
+    startAppAd = [[STAStartAppAd alloc] init];
 }
 - (void)viewDidLoad
 {
@@ -64,24 +97,9 @@
     [[_playView layer] setBorderColor:[UIColor lightGrayColor].CGColor];
     [_btnOption setSelected:[HWGameSetting SharedSetting].isSoundEnabled];
     self.screenName  = @"Game Play View";
-    topBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-    topBanner.delegate = self;
-    topBanner.hidden = YES;
-    [_adBannerTopView addSubview:topBanner];
-
-    botBanner = [[GADBannerView alloc] initWithAdSize:GADAdSizeFullWidthPortraitWithHeight(50)];
-    botBanner.adUnitID = kGADBannerID;
-    botBanner.delegate = self;
-    botBanner.hidden = YES;
-    botBanner.rootViewController = self;
-    [_adBannerBotView addSubview:botBanner];
-
+    [self setupAdBanner];
     [self creatBoard];
     isStartedGame = NO;
-    
-    GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObjects:GAD_SIMULATOR_ID, nil];
-    [botBanner loadRequest:request];
     
     NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
     if (bestScore)
@@ -98,7 +116,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [startAppAd loadAd];  // Add this line
     //only auto start game if it is the first load
     if (isFirstLoad)
     {
@@ -119,6 +137,7 @@
 - (IBAction)restartTapped:(id)sender {
     [self resetBoard];
     [self startGame];
+    [self sendGADInterstitialRequest]; //debug
 }
 
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender {
@@ -139,6 +158,10 @@
 - (IBAction)btnOptionsTapped:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
     [HWGameSetting SharedSetting].isSoundEnabled = sender.isSelected;
+}
+
+- (IBAction)btnSettingTapped:(id)sender {
+    [self presentViewController:[HWSettingViewController SharedInstance] animated:YES completion:nil];
 }
 
 #pragma mark - gameplay
@@ -235,11 +258,11 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
     NSLog(@"iAd %@", error);
-    banner.hidden = YES;
+    [self showBanner:startAppBanner];
 }
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
-    banner.hidden = NO;
+    [self showBanner:banner];
     NSLog(@"iAd loaded");
 }
 #pragma mark GADDelegate
@@ -250,6 +273,7 @@
 }
 - (void)adViewDidReceiveAd:(GADBannerView *)view{
     NSLog(@"GAD loaded");
+    [self showBanner:view];
     view.hidden = NO;
 }
 - (void)adViewWillLeaveApplication:(GADBannerView *)adView
@@ -275,7 +299,7 @@
 {
     JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
     imageInfo.image = image;
-    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundStyle_ScaledDimmedBlurred];
+    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle: JTSImageViewControllerBackgroundOption_Blurred];
     [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
     
 }
@@ -388,5 +412,28 @@
 -(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController
 {
     [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
+}
+#pragma mark - STABannerDelegateProtocol
+- (void)didClickBannerAd:(STABannerView *)banner
+{
+    
+}
+- (void) didDisplayBannerAd:(STABannerView*)banner
+{
+    NSLog(@"LOADED STARTAPP Banner");
+    [self showBanner:banner];
+}
+- (void) failedLoadBannerAd:(STABannerView*)banner withError:(NSError *)error
+{
+    [self showBanner:iadBanner];
+    NSLog(@"%@", error.localizedDescription);
+}
+
+- (void)showBanner:(UIView *)banner
+{
+    admobBanner.hidden = YES;
+    startAppBanner.hidden = YES;
+    iadBanner.hidden = YES;
+    banner.hidden = NO;
 }
 @end

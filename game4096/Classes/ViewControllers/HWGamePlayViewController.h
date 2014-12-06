@@ -27,6 +27,7 @@
 - (IBAction)swipeDetected:(UISwipeGestureRecognizer *)sender;
 - (IBAction)btnRankTapped:(id)sender;
 - (IBAction)btnOptionsTapped:(id)sender;
+- (IBAction)btnSettingTapped:(id)sender;
 
 #pragma mark - gamekit
 @property (nonatomic, assign)BOOL gameCenterEnabled;

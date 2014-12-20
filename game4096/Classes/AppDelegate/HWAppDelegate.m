@@ -11,7 +11,7 @@
 #import "GAI.h"
 #import "iRate.h"
 #import <Crashlytics/Crashlytics.h>
-#import <AdColony/AdColony.h>
+//#import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
 
 @implementation HWAppDelegate
@@ -40,10 +40,10 @@
 
     [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
     
-    [AdColony configureWithAppID:kAdCololyAppID
-                         zoneIDs:@[kAdCololyAdZoneID]
-                        delegate:nil
-                         logging:YES];
+//    [AdColony configureWithAppID:kAdCololyAppID
+//                         zoneIDs:@[kAdCololyAdZoneID]
+//                        delegate:nil
+//                         logging:YES];
     
     STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
     sdk.appID = kStartAppID;

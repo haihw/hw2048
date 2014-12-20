@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
+
 @implementation HWAppDelegate
 
 + (void)initialize
@@ -49,6 +50,10 @@
     sdk.devID = kStartAppDevID;
     sdk.preferences = [STASDKPreferences prefrencesWithAge:25 andGender:STAGender_Male];
 
+    //Storekit
+
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     HWGamePlayViewController *vc = [[HWGamePlayViewController alloc] init];
@@ -86,5 +91,54 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+- (void)storeTransaction:(SKPaymentTransaction *)transaction
+{
+#if USE_ICLOUD_STORAGE
+    NSUbiquitousKeyValueStore *storage = [NSUbiquitousKeyValueStore defaultStore];
+#else
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+#endif
+    
+    NSData *newReceipt = transaction.transactionReceipt;
+    NSArray *savedReceipts = [storage arrayForKey:@"receipts"];
+    if (!savedReceipts) {
+        // Storing the first receipt
+        [storage setObject:@[newReceipt] forKey:@"receipts"];
+    } else {
+        // Adding another receipt
+        NSArray *updatedReceipts = [savedReceipts arrayByAddingObject:newReceipt];
+        [storage setObject:updatedReceipts forKey:@"receipts"];
+    }
+    [storage setObject:@"YES" forKey:@"removedAd"];
+    [storage synchronize];
 
+}
+- (void)paymentQueue:(SKPaymentQueue *)queue
+ updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+                // Call the appropriate custom method for the transaction state.
+            case SKPaymentTransactionStatePurchasing:
+                break;
+            case SKPaymentTransactionStateDeferred:
+                break;
+            case SKPaymentTransactionStateFailed:
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
+            case SKPaymentTransactionStatePurchased:
+                [self storeTransaction:transaction];
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [self storeTransaction:transaction];
+                [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+                break;
+            default:
+                // For debugging
+                NSLog(@"Unexpected transaction state %@", @(transaction.transactionState));
+                break;
+        }
+    }
+}
 @end

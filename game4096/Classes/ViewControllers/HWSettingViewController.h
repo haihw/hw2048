@@ -14,4 +14,6 @@
 - (IBAction)btnRateTapped:(id)sender;
 - (IBAction)btnRemoveAdTapped:(id)sender;
 - (IBAction)switchSoundChanged:(id)sender;
+- (IBAction)btnRestorePurchaseTapped:(id)sender;
+@property (strong, nonatomic) IBOutlet UISwitch *switchSoundOption;
 @end

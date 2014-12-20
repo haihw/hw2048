@@ -21,6 +21,9 @@
 #define kAnimationNewDuration 0.15f
 #define kGameTargetNumber 2048
 #define kLeaderBoardIdentifier @"2048SexyLeaderBoard"
+#define kInAppPurchaseRemoveAdProductID @"com.haihw.2048jav.removead"
+#define kRemoveAdKey @"removedAd"
+#define kSoundOptionKey @"soundOptionKey"
 //commbo1
 #define HexColor11MidNightBlue 0x003366
 #define HexColor12DodgeBlue    0x3399FF

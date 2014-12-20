@@ -123,6 +123,8 @@
         [self restartTapped:nil];
         isFirstLoad = NO;
     }
+    
+    _btnOption.selected = [HWGameSetting SharedSetting].isSoundEnabled;
 }
 - (void)didReceiveMemoryWarning
 {

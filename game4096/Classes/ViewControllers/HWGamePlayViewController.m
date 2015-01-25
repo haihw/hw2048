@@ -47,6 +47,8 @@
 }
 - (void)sendGADInterstitialRequest
 {
+    if ([HWSettingViewController SharedInstance].isRemovedAd)
+        return;
 //    interstitialAd = [[GADInterstitial alloc] init];
 //    interstitialAd.adUnitID = kGADInterstitialID;
 //    interstitialAd.delegate = self;
@@ -57,6 +59,8 @@
 }
 - (void)setupAdBanner
 {
+    if ([HWSettingViewController SharedInstance].isRemovedAd)
+        return;
     
     iadBanner = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     iadBanner.delegate = self;
@@ -125,6 +129,12 @@
     }
     
     _btnOption.selected = [HWGameSetting SharedSetting].isSoundEnabled;
+    if ([HWSettingViewController SharedInstance].isRemovedAd)
+    {
+        _adBannerBotView.hidden = YES;
+        _adBannerTopView.hidden = YES;
+    }
+
 }
 - (void)didReceiveMemoryWarning
 {

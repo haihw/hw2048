@@ -17,13 +17,22 @@
 @end
 
 @implementation HWSettingViewController
-+(id)SharedInstance {
++(HWSettingViewController *)SharedInstance {
     static dispatch_once_t pred;
     static HWSettingViewController *shared = nil;
     
     dispatch_once(&pred, ^{
         shared = [[HWSettingViewController alloc] init];
         [[SKPaymentQueue defaultQueue] addTransactionObserver:shared];
+        
+        //show remove ad option
+#if USE_ICLOUD_STORAGE
+        NSUbiquitousKeyValueStore *storage = [NSUbiquitousKeyValueStore defaultStore];
+#else
+        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+#endif
+        NSString *removedAd = [storage objectForKey: kRemoveAdKey];
+        shared.isRemovedAd = (removedAd != nil);
     });
     return shared;
 }
@@ -85,7 +94,7 @@
 {
     [super viewDidAppear:animated];
     [_switchSoundOption setOn: [HWGameSetting SharedSetting].isSoundEnabled];
-
+    _btnRemoveAd.enabled = !self.isRemovedAd;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

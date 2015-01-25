@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface HWSettingViewController : UIViewController
-+(id)SharedInstance;
++(HWSettingViewController *)SharedInstance;
 - (IBAction)btnCloseTapped:(id)sender;
 - (IBAction)btnRateTapped:(id)sender;
 - (IBAction)btnRemoveAdTapped:(id)sender;
 - (IBAction)switchSoundChanged:(id)sender;
 - (IBAction)btnRestorePurchaseTapped:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *btnRemoveAd;
 @property (strong, nonatomic) IBOutlet UISwitch *switchSoundOption;
+@property (assign) BOOL isRemovedAd;
 @end

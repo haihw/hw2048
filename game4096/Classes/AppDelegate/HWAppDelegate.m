@@ -13,7 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 //#import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
-
+#import "HWSettingViewController.h"
 @implementation HWAppDelegate
 
 + (void)initialize
@@ -109,7 +109,8 @@
         NSArray *updatedReceipts = [savedReceipts arrayByAddingObject:newReceipt];
         [storage setObject:updatedReceipts forKey:@"receipts"];
     }
-    [storage setObject:@"YES" forKey:@"removedAd"];
+    [storage setObject:@"YES" forKey: kRemoveAdKey];
+    [HWSettingViewController SharedInstance].isRemovedAd = YES;
     [storage synchronize];
 
 }

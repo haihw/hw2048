@@ -10,7 +10,7 @@
 #import "HWGamePlayViewController.h"
 #import "GAI.h"
 #import "iRate.h"
-#import <Crashlytics/Crashlytics.h>
+//#import <Crashlytics/Crashlytics.h>
 //#import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
 #import "HWSettingViewController.h"
@@ -38,7 +38,7 @@
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-38276506-10"];
 
-    [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
+//    [Crashlytics startWithAPIKey:@"590e85a5e7df124780bb8476a41281f5b5f54469"];
     
 //    [AdColony configureWithAppID:kAdCololyAppID
 //                         zoneIDs:@[kAdCololyAdZoneID]

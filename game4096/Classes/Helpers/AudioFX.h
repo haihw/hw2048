@@ -81,7 +81,7 @@ Use this class to play casual sounds during user interface interaction (keyboard
 Make sure the sound files are small and uncompressed or IMA.
 When you have lots of small sounds and don't really care about the latency response when playing them, it's recommended to create and destroy AudioFX instances on demand instead of allocating them all upfront - or use the +playAtPath: method.
 */
-@interface AudioFX : NSObject
+@interface AudioFX : NSObject <AudioFXDelegate>
 {
 @private
 	UInt32					_soundID;

@@ -598,7 +598,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HW;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Hai Hw";
 				TargetAttributes = {
 					C5296DA218E2744400EF3714 = {
@@ -720,7 +720,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/CrashlyticsFramework/Crashlytics.framework/run 590e85a5e7df124780bb8476a41281f5b5f54469 3d00c4a78de174ca2e786e56971cf404690c137efb1e1a0b41ecdadf2ee87ef5";
+			shellScript = "";
 		};
 		DA2A641672724C1DBC15C10C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -872,7 +872,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01E18F2FDF3F7607C31F0A26 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -898,7 +897,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB5E71C4DB8C53BB7DF7258E /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";

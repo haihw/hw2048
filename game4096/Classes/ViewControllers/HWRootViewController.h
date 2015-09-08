@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics/GAI.h>
 @interface HWRootViewController : GAITrackedViewController
 
 @end

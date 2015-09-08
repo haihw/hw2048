@@ -12,9 +12,8 @@
 #import "HWGame.h"
 #import "HWSettingViewController.h"
 
-#import "GADBannerView.h"
-#import "GADInterstitial.h"
-#import <AdColony/AdColony.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
+//#import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <AVFoundation/AVFoundation.h>

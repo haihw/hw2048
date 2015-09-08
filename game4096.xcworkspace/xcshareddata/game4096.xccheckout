@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>78186FA7-48E5-4A5E-A4DA-26E11DEB5593</string>
+	<string>5A82A8EF-DA03-4CE7-AF43-FCE210565DB8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>game4096</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>88DCF131-5E87-4540-ACF7-7EB116578743</key>
+		<key>1CAD8E2642B7987551892308C7AD3BFB88C518A4</key>
 		<string>https://github.com/haihw/2048Game.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>game4096.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>88DCF131-5E87-4540-ACF7-7EB116578743</key>
+		<key>1CAD8E2642B7987551892308C7AD3BFB88C518A4</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/haihw/2048Game.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>88DCF131-5E87-4540-ACF7-7EB116578743</string>
+	<string>1CAD8E2642B7987551892308C7AD3BFB88C518A4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>88DCF131-5E87-4540-ACF7-7EB116578743</string>
+			<string>1CAD8E2642B7987551892308C7AD3BFB88C518A4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>game4096</string>
+			<string>2048Game</string>
 		</dict>
 	</array>
 </dict>

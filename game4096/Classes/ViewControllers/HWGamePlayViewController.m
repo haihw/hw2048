@@ -11,7 +11,7 @@
 #import "HWGameSetting.h"
 #import "HWGame.h"
 #import <iAd/iAd.h>
-#import "GADBannerView.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <JTSImageViewController/JTSImageViewController.h>
 
 @interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate>
@@ -68,7 +68,7 @@
     
     // Make the request for a test ad. Put in an identifier for
     // the simulator as well as any devices you want to receive test ads.
-    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", GAD_SIMULATOR_ID, nil];
+    request.testDevices = [NSArray arrayWithObjects:@"2e403e244cdcff906eb2c2c4a52fc382", nil];
     [botBanner loadRequest:request];
     
     NSNumber *bestScore = [[NSUserDefaults standardUserDefaults] objectForKey:kKeyBestScoreKey];
@@ -219,7 +219,7 @@
 {
     JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
     imageInfo.image = image;
-    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundStyle_ScaledDimmedBlurred];
+    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle:JTSImageViewControllerBackgroundOption_Blurred];
     [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
     
 }

@@ -14,4 +14,8 @@
 @property (nonatomic, strong)NSArray *originalImages;
 @property (nonatomic, strong)NSArray *girlImages;
 @property (nonatomic, strong)NSArray *fullgirlImages;
+
+- (NSString *)getDataPath;
+- (NSString *)getServerPath;
+
 @end

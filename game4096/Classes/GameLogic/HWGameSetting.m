@@ -61,5 +61,14 @@
     });
     return shared;
 }
+- (NSString *)getDataPath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"/resources"];
+    return dataPath;
+}
+- (NSString *)getServerPath{
+    return @"https://raw.githubusercontent.com/haihw/hw2048/Bikini_Version/game4096/Resources/Images/girlFulls/";
+}
 
 @end

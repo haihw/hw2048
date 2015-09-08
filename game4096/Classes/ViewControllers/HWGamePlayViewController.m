@@ -13,13 +13,12 @@
 #import "HWSettingViewController.h"
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
-//#import <AdColony/AdColony.h>
 #import <StartApp/StartApp.h>
 #import <JTSImageViewController/JTSImageViewController.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "AudioFX.h"
-
+#import "MBProgressHUD.h"
 #import <GameKit/GameKit.h>
 @interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate, STABannerDelegateProtocol>
 {
@@ -84,9 +83,7 @@
     startAppBanner.hidden = YES;
     startAppAd = [[STAStartAppAd alloc] init];
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)initializeGameEnviroinment{
     // Do any additional setup after loading the view from its nib.
     if ([UIScreen mainScreen].bounds.size.height > 480)
     {
@@ -113,6 +110,83 @@
     _gameCenterEnabled = NO;
     [self authenticateLocalPlayer];
     isFirstLoad = YES;
+    
+}
+- (NSArray *)getMissingImageFileNames{
+    NSError *error;
+    NSString *dataPath = [[HWGameSetting SharedSetting] getDataPath];
+    NSLog(@"Path: %@", dataPath);
+    NSMutableArray *resourceFileNames = [NSMutableArray array];
+//    for (NSString *name in [HWGameSetting SharedSetting].girlImages){
+//        [resourceFileNames addObject: [name stringByAppendingString:@"@2x.png"]];
+//    }
+    for (NSString *name in [HWGameSetting SharedSetting].fullgirlImages){
+        [resourceFileNames addObject: name];
+    }
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
+        return resourceFileNames;
+    }
+    
+    NSMutableArray *missingResoureNames = [NSMutableArray array];
+    for (NSString *name in resourceFileNames){
+        NSString *filePath = [dataPath stringByAppendingFormat:@"/%@", name];
+        //TODO: should check if file is corrupted or not
+        if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+            [missingResoureNames addObject:name];
+        }
+    }
+    return missingResoureNames;
+}
+- (void)downloadResources:(NSArray *)resourceNames
+        completionHandler:(void (^)(BOOL success)) handler {
+    __block NSInteger nDownloading = resourceNames.count;
+    __block BOOL anyError = NO;
+    if (nDownloading == 0){
+        handler(YES);
+        return;
+    }
+    NSString *serverPath = [[HWGameSetting SharedSetting] getServerPath];
+    NSString *localPath = [[HWGameSetting SharedSetting] getDataPath];
+    for (NSString *name in resourceNames){
+        NSString *url = [serverPath stringByAppendingString:name];
+        NSString *localFilePath = [localPath stringByAppendingFormat:@"/%@", name];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (error) {
+                NSLog(@"Download Error:%@",error.description);
+                anyError = YES;
+            }else if (data) {
+                [data writeToFile:localFilePath atomically:YES];
+                NSLog(@"File is saved to %@",localFilePath);
+            }
+            nDownloading --;
+            if (nDownloading == 0){
+                handler (!anyError);
+            }
+        }];
+    }
+}
+- (void)checkingResourcesAndStartGame{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Checking...";
+    
+    NSArray *missingResourceFileNames = [self getMissingImageFileNames];
+    [self downloadResources:missingResourceFileNames completionHandler:^(BOOL success) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (!success){
+            [self checkingResourcesAndStartGame];
+        } else {
+            [self initializeGameEnviroinment];
+        }
+    }];
+
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self checkingResourcesAndStartGame];
 }
 
 

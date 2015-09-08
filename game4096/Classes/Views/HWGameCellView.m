@@ -10,6 +10,7 @@
 #import "HWGame.h"
 #import "UIColor+HexColor.h"
 #import "HWImageDisplayView.h"
+#import "HWGameSetting.h"
 @implementation HWGameCellView
 
 - (id)initWithFrame:(CGRect)frame
@@ -30,7 +31,13 @@
         return;
 
     int index = log2(_value)-1;
-    UIImage *image = [UIImage imageNamed:_fullimageNames[index % _imageNames.count]];
+    
+    NSString *imageName = _fullimageNames[index % _imageNames.count];
+    NSString *filePath = [[[HWGameSetting SharedSetting] getDataPath] stringByAppendingFormat:@"/%@", imageName];
+    NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+    UIImage *image = [UIImage imageWithData:imageData];
+    
+//    UIImage *image = [UIImage imageNamed:_fullimageNames[index % _imageNames.count]];
     if (_delegate && [_delegate respondsToSelector:@selector(gameCellWantToDisplayImage:)])
     {
         [_delegate gameCellWantToDisplayImage:image];

@@ -548,7 +548,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HW;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Hai Hw";
 				TargetAttributes = {
 					C5296DA218E2744400EF3714 = {
@@ -750,6 +750,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -810,8 +811,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hai Nguyen Huu Hiep (H3QEKMNSD4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hai Nguyen Huu Hiep (H3QEKMNSD4)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -822,8 +824,9 @@
 				GCC_PREFIX_HEADER = "game4096/Classes/Others/game4096-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/game4096/Resources/Data/Strings/game4096-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.2048jav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adb0c8bc-d952-4f98-9bc4-65044db1f59d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -837,6 +840,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hai Nguyen Huu Hiep (47NZJ66X5R)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -847,8 +851,9 @@
 				GCC_PREFIX_HEADER = "game4096/Classes/Others/game4096-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/game4096/Resources/Data/Strings/game4096-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihw.2048jav;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "096647c1-b0a4-4492-b7e5-59788ca8767c";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -870,6 +875,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "game4096Tests/game4096Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -888,6 +894,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "game4096/game4096-Prefix.pch";
 				INFOPLIST_FILE = "game4096Tests/game4096Tests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.haihw.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

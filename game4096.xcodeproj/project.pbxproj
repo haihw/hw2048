@@ -26,8 +26,6 @@
 		C5296DE918E2753900EF3714 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DDD18E2753900EF3714 /* main.m */; };
 		C5296DEA18E2753900EF3714 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5296DE318E2753900EF3714 /* InfoPlist.strings */; };
 		C5296DEC18E2753900EF3714 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5296DE718E2753900EF3714 /* Images.xcassets */; };
-		C5296DF918E2762A00EF3714 /* HWRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296DF718E2762A00EF3714 /* HWRootViewController.m */; };
-		C5296DFA18E2762A00EF3714 /* HWRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296DF818E2762A00EF3714 /* HWRootViewController.xib */; };
 		C5296E0318E2D62F00EF3714 /* HWGamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */; };
 		C5296E0418E2D62F00EF3714 /* HWGamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */; };
 		C5296E0818E2DCF200EF3714 /* HWGameCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5296E0718E2DCF200EF3714 /* HWGameCellView.m */; };
@@ -113,9 +111,6 @@
 		C5296DE418E2753900EF3714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C5296DE518E2753900EF3714 /* game4096-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "game4096-Info.plist"; sourceTree = "<group>"; };
 		C5296DE718E2753900EF3714 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C5296DF618E2762A00EF3714 /* HWRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWRootViewController.h; sourceTree = "<group>"; };
-		C5296DF718E2762A00EF3714 /* HWRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWRootViewController.m; sourceTree = "<group>"; };
-		C5296DF818E2762A00EF3714 /* HWRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWRootViewController.xib; sourceTree = "<group>"; };
 		C5296E0018E2D62F00EF3714 /* HWGamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWGamePlayViewController.h; sourceTree = "<group>"; };
 		C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWGamePlayViewController.m; sourceTree = "<group>"; };
 		C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HWGamePlayViewController.xib; sourceTree = "<group>"; };
@@ -416,9 +411,6 @@
 		C5296DF518E2762A00EF3714 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C5296DF618E2762A00EF3714 /* HWRootViewController.h */,
-				C5296DF718E2762A00EF3714 /* HWRootViewController.m */,
-				C5296DF818E2762A00EF3714 /* HWRootViewController.xib */,
 				C5296E0018E2D62F00EF3714 /* HWGamePlayViewController.h */,
 				C5296E0118E2D62F00EF3714 /* HWGamePlayViewController.m */,
 				C5296E0218E2D62F00EF3714 /* HWGamePlayViewController.xib */,
@@ -605,7 +597,6 @@
 				C5D0EF3D18FE6763003C4F54 /* Blue-Starry-Night-Sky@2x.jpg in Resources */,
 				C58F037E197BA35B004B4A25 /* move.wav in Resources */,
 				C5296E0A18E2DE5A00EF3714 /* HWGameCellView.xib in Resources */,
-				C5296DFA18E2762A00EF3714 /* HWRootViewController.xib in Resources */,
 				C57D73B11A334C90000EDB35 /* HWSettingViewController.xib in Resources */,
 				C57D73AC1A334A1E000EDB35 /* ranking-icon.png in Resources */,
 				C5D0EF2918FE627F003C4F54 /* g3@2x.png in Resources */,
@@ -683,7 +674,6 @@
 				C5296DE918E2753900EF3714 /* main.m in Sources */,
 				C55EF46018E5639D00188EFF /* UIColor+HexColor.m in Sources */,
 				C5296DE818E2753900EF3714 /* HWAppDelegate.m in Sources */,
-				C5296DF918E2762A00EF3714 /* HWRootViewController.m in Sources */,
 				C5296E1118E2E2B300EF3714 /* HWGame.m in Sources */,
 				C5296E0E18E2E12800EF3714 /* HWGameSetting.m in Sources */,
 				C5296E0818E2DCF200EF3714 /* HWGameCellView.m in Sources */,

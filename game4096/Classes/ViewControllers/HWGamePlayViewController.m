@@ -20,7 +20,7 @@
 #import "AudioFX.h"
 #import "MBProgressHUD.h"
 #import <GameKit/GameKit.h>
-@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate, STABannerDelegateProtocol>
+@interface HWGamePlayViewController () <HWGameDelegate, GADBannerViewDelegate, UIAlertViewDelegate, ADBannerViewDelegate, UIGestureRecognizerDelegate, HWGameCellViewDelegate, GKGameCenterControllerDelegate, GADInterstitialDelegate, STABannerDelegateProtocol, JTSImageViewControllerInteractionsDelegate, UIActionSheetDelegate>
 {
     HWGame *game;
     BOOL isStartedGame, isFirstLoad;
@@ -30,6 +30,8 @@
     GADInterstitial *interstitialAd;
     STAStartAppAd* startAppAd;    // ADD THIS LINE
     SystemSoundID soundID;
+    
+    UIImage *showingImage;
 }
 @end
 
@@ -176,10 +178,10 @@
     [self downloadResources:missingResourceFileNames completionHandler:^(BOOL success) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (!success){
-            [self checkingResourcesAndStartGame];
-        } else {
-            [self initializeGameEnviroinment];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message" message:@"Cannot download extra resource, the game will start now" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            [alert show];
         }
+        [self initializeGameEnviroinment];
     }];
 
 }
@@ -382,11 +384,14 @@
 #pragma mark - HwGameCellDelegate
 - (void)gameCellWantToDisplayImage:(UIImage *)image
 {
-    JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
-    imageInfo.image = image;
-    JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle: JTSImageViewControllerBackgroundOption_Blurred];
-    [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOffscreen];
-    
+    if (image){
+        showingImage = image;
+        JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
+        imageInfo.image = image;
+        JTSImageViewController *imageVC = [[JTSImageViewController alloc] initWithImageInfo:imageInfo mode:JTSImageViewControllerMode_Image backgroundStyle: JTSImageViewControllerBackgroundOption_Blurred];
+        imageVC.interactionsDelegate = self;
+        [imageVC showFromViewController:self transition:JTSImageViewControllerTransition_FromOriginalPosition];
+    }
 }
 -(BOOL) playSoundFXnamed: (NSString*) vSFXName Loop: (BOOL) vLoop
 {
@@ -520,5 +525,23 @@
     startAppBanner.hidden = YES;
     iadBanner.hidden = YES;
     banner.hidden = NO;
+}
+
+#pragma mark - JTSImageViewControllerInteractionsDelegate
+- (void)imageViewerDidLongPress:(JTSImageViewController *)imageViewer atRect:(CGRect)rect
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Save Photo", nil];
+    [sheet showInView:self.view];
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        UIImageWriteToSavedPhotosAlbum(showingImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    }
+}
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.presentedViewController.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"Photo is saved";
+    [hud hide:YES afterDelay:0.5f];
 }
 @end

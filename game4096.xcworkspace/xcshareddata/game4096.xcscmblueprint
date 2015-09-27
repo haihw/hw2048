@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1CAD8E2642B7987551892308C7AD3BFB88C518A4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "88DCF131-5E87-4540-ACF7-7EB116578743" : 0,
+    "1CAD8E2642B7987551892308C7AD3BFB88C518A4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "78186FA7-48E5-4A5E-A4DA-26E11DEB5593",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "88DCF131-5E87-4540-ACF7-7EB116578743" : "game4096",
+    "1CAD8E2642B7987551892308C7AD3BFB88C518A4" : "2048Game"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "game4096",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "game4096.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/haihw\/2048Game.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CAD8E2642B7987551892308C7AD3BFB88C518A4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/haihw\/2048Game.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "88DCF131-5E87-4540-ACF7-7EB116578743"
+    }
+  ]
+}
